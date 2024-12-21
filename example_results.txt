@@ -1,0 +1,33 @@
+>ANN_model.py:
+
+Test accuracy: 0.50
+
+Model: "sequential"
+┌─────────────────────────────────┬────────────────────────┬───────────────┐
+│ Layer (type)                    │ Output Shape           │       Param # │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ dense (Dense)                   │ (None, 6)              │            42 │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ dropout (Dropout)               │ (None, 6)              │             0 │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ dense_1 (Dense)                 │ (None, 8)              │            56 │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ dropout_1 (Dropout)             │ (None, 8)              │             0 │
+├─────────────────────────────────┼────────────────────────┼───────────────┤
+│ dense_2 (Dense)                 │ (None, 1)              │             9 │
+└─────────────────────────────────┴────────────────────────┴───────────────┘
+ Total params: 107 (428.00 B)
+ Trainable params: 107 (428.00 B)
+ Non-trainable params: 0 (0.00 B)
+
+Cross-validation scores: [0.45   0.4625 0.5    0.6125 0.45  ]
+
+None
+Layer: dense, Type: Dense
+Layer: dropout, Type: Dropout
+Layer: dense_1, Type: Dense
+Layer: dropout_1, Type: Dropout
+Layer: dense_2, Type: Dense
+
+Test Loss: 0.5189
+Test Accuracy: 0.7233
