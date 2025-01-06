@@ -12,3 +12,6 @@ and [MNIST testing](https://github.com/JPP-J/deep-_learning_project/tree/1e06ac3
   - ANN
   - CNN
 - [ImageNet Usage Project](https://github.com/JPP-J/deep-_learning_project/blob/c310f4a0ebcec18f773cb4cb3b62b42cc7c232ba/DL_1_Classified_object_imagenet.ipynb) for image classification tasks on resnet50d model
+- [Object detecion on picture with YOLO](https://github.com/JPP-J/deep-_learning_project/blob/5dafda7bea3fadb6fafba5723149e65eac65f9e0/DL_2_Oblect_dectection.ipynb) on yolov8n model
+- [Train on custom dataset](https://github.com/JPP-J/deep-_learning_project/blob/5dafda7bea3fadb6fafba5723149e65eac65f9e0/DL_3_train_smoke_dataset.ipynb) with smoke dataset picture and test accuracy at 90%
+
