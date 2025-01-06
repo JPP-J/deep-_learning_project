@@ -2,16 +2,19 @@
 
 This repo is home to the code that accompanies Jidapa's *Deep Learining Project* :
 
-1.associated [Deep Learning Project Report](https://drive.google.com/file/d/1z4KdqlYg3F4nBzVYaPEvUQAG2rQdejAC/view?usp=sharing) 
+1. associated [Deep Learning Project Report](https://drive.google.com/file/d/1z4KdqlYg3F4nBzVYaPEvUQAG2rQdejAC/view?usp=sharing) 
 on datatset [MNIST training ](https://github.com/JPP-J/deep-_learning_project/tree/1e06ac3f6590fd3618c403e7f454b44b0299ea12/data/MNIST%20-%20JPG%20-%20training) 
 and [MNIST testing](https://github.com/JPP-J/deep-_learning_project/tree/1e06ac3f6590fd3618c403e7f454b44b0299ea12/data/MNIST%20-%20JPG%20-%20training) and which provides; 
-- example python code for deep learning data on tensorflow with:
-  - ANN [ANN_model.py](https://github.com/JPP-J/deep-_learning_project/blob/1e06ac3f6590fd3618c403e7f454b44b0299ea12/ANN_model.py) and [ANN_usage.py](https://github.com/JPP-J/deep-_learning_project/blob/1e06ac3f6590fd3618c403e7f454b44b0299ea12/ANN_usage.py)
-  - CNN [CNN_model.py](https://github.com/JPP-J/deep-_learning_project/blob/1e06ac3f6590fd3618c403e7f454b44b0299ea12/CNN_model.py) and [CNN_usage.py](https://github.com/JPP-J/deep-_learning_project/blob/1e06ac3f6590fd3618c403e7f454b44b0299ea12/CNN_usage.py)
-- rapid miner processes for deep learning data with:
-  - ANN
-  - CNN
-- [ImageNet Usage Project](https://github.com/JPP-J/deep-_learning_project/blob/c310f4a0ebcec18f773cb4cb3b62b42cc7c232ba/DL_1_Classified_object_imagenet.ipynb) for image classification tasks on resnet50d model
-- [Object detecion on picture with YOLO](https://github.com/JPP-J/deep-_learning_project/blob/5dafda7bea3fadb6fafba5723149e65eac65f9e0/DL_2_Oblect_dectection.ipynb) on yolov8n model
-- [Train on custom dataset](https://github.com/JPP-J/deep-_learning_project/blob/5dafda7bea3fadb6fafba5723149e65eac65f9e0/DL_3_train_smoke_dataset.ipynb) with smoke dataset picture and test accuracy at 90%
+  - example python code for deep learning data on tensorflow with:
+    - ANN [ANN_model.py](https://github.com/JPP-J/deep-_learning_project/blob/1e06ac3f6590fd3618c403e7f454b44b0299ea12/ANN_model.py) and [ANN_usage.py](https://github.com/JPP-J/deep-_learning_project/blob/1e06ac3f6590fd3618c403e7f454b44b0299ea12/ANN_usage.py)
+    - CNN [CNN_model.py](https://github.com/JPP-J/deep-_learning_project/blob/1e06ac3f6590fd3618c403e7f454b44b0299ea12/CNN_model.py) and [CNN_usage.py](https://github.com/JPP-J/deep-_learning_project/blob/1e06ac3f6590fd3618c403e7f454b44b0299ea12/CNN_usage.py)
+  - rapid miner processes for deep learning data with:
+    - ANN
+    - CNN
+
+2. [ImageNet Usage Project](https://github.com/JPP-J/deep-_learning_project/blob/c310f4a0ebcec18f773cb4cb3b62b42cc7c232ba/DL_1_Classified_object_imagenet.ipynb) for image classification tasks on resnet50d model
+
+3. [Object detecion on picture with YOLO](https://github.com/JPP-J/deep-_learning_project/blob/5dafda7bea3fadb6fafba5723149e65eac65f9e0/DL_2_Oblect_dectection.ipynb) on yolov8n model
+
+4. [Train on custom dataset](https://github.com/JPP-J/deep-_learning_project/blob/5dafda7bea3fadb6fafba5723149e65eac65f9e0/DL_3_train_smoke_dataset.ipynb) with smoke dataset picture and test accuracy at 90%
 
