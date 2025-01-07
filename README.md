@@ -17,4 +17,5 @@ and [MNIST testing](https://github.com/JPP-J/deep-_learning_project/tree/1e06ac3
 3. [Object detecion picture with YOLO](https://github.com/JPP-J/deep-_learning_project/blob/5dafda7bea3fadb6fafba5723149e65eac65f9e0/DL_2_Oblect_dectection.ipynb) on yolov8n model
 
 4. [Train on custom dataset](https://github.com/JPP-J/deep-_learning_project/blob/5dafda7bea3fadb6fafba5723149e65eac65f9e0/DL_3_train_smoke_dataset.ipynb) with smoke dataset picture from roboflow and test accuracy at 90%
+5. [Image Search](https://github.com/JPP-J/deep-_learning_project/blob/5ae7f5701be9a6fe7e4e35cfa914196da49e2e93/DL_4_Image_search.ipynb) from video with CLIP Pre-trained Model
 
