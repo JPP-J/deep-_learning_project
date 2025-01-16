@@ -16,6 +16,7 @@ This repo is home to the code that accompanies Jidapa's *Deep Learining Project*
   - example python code for deep learning data on tensorflow with:
       - ANN [ANN_model.py](https://github.com/JPP-J/deep-_learning_project/blob/1e06ac3f6590fd3618c403e7f454b44b0299ea12/ANN_model.py) and [ANN_usage.py](https://github.com/JPP-J/deep-_learning_project/blob/1e06ac3f6590fd3618c403e7f454b44b0299ea12/ANN_usage.py)
       - CNN [CNN_model.py](https://github.com/JPP-J/deep-_learning_project/blob/1e06ac3f6590fd3618c403e7f454b44b0299ea12/CNN_model.py) and [CNN_usage.py](https://github.com/JPP-J/deep-_learning_project/blob/1e06ac3f6590fd3618c403e7f454b44b0299ea12/CNN_usage.py)
+      - [Dockerfile](https://github.com/JPP-J/deep-_learning_project/blob/4334fed9acc6ac7abee6a4f7bdb7f211c8b525e4/Dockerfile)
   - rapid miner processes for deep learning data with:
       - ANN
       - CNN
