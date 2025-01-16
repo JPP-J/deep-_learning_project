@@ -67,7 +67,6 @@ This repo is home to the code that accompanies Jidapa's *Deep Learining Project*
 - **Libraries Used**:
   - Data Analysis: pandas, NumPy
   - GUI Interface: gradio
-  - Image Handling: PIL
   - Pretrained Model:  openthaigpt-1.0.0-7b-chat
   - Deep Learning: pytorch, llama-index, llama-cpp-python
 - [Promt with LLM openthaigpt_1_0_0_7b_chat model Notebook](https://github.com/JPP-J/deep-_learning_project/blob/74c992978381f462a2f8bed2aaf6009c5f58e732/DL_5_WITH_openthaigpt_1_0_0_7b_chat.ipynb) 
