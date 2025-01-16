@@ -60,7 +60,7 @@ This repo is home to the code that accompanies Jidapa's *Deep Learining Project*
   - Image Handling: PIL, cv2
   - Pretrained Model:  CLIP Pre-trained
   - Deep Learning: pytorch, CLIP, torchvision, transformers
-- [Image Search](https://github.com/JPP-J/deep-_learning_project/blob/5ae7f5701be9a6fe7e4e35cfa914196da49e2e93/DL_4_Image_search.ipynb)
+- [Image Search Notebook](https://github.com/JPP-J/deep-_learning_project/blob/5ae7f5701be9a6fe7e4e35cfa914196da49e2e93/DL_4_Image_search.ipynb)
 
 ## Project 6: Thai LLM model usage Project
 - **Description**: Usage That LLM model with openthaigpt-1.0.0-7b-chat with hugging face
