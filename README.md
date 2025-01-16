@@ -1,4 +1,4 @@
-# Deep learning Project
+# Deep learning Projects
 
 This repo is home to the code that accompanies Jidapa's *Deep Learining Project* :
 
