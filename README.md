@@ -70,4 +70,11 @@ This repo is home to the code that accompanies Jidapa's *Deep Learining Project*
   - GUI Interface: gradio
   - Pretrained Model:  openthaigpt-1.0.0-7b-chat
   - Deep Learning: pytorch, llama-index, llama-cpp-python
-- [Promt with LLM openthaigpt_1_0_0_7b_chat model Notebook](https://github.com/JPP-J/deep-_learning_project/blob/74c992978381f462a2f8bed2aaf6009c5f58e732/DL_5_WITH_openthaigpt_1_0_0_7b_chat.ipynb) 
+- [Promt with LLM openthaigpt_1_0_0_7b_chat model Notebook](https://github.com/JPP-J/deep-_learning_project/blob/74c992978381f462a2f8bed2aaf6009c5f58e732/DL_5_WITH_openthaigpt_1_0_0_7b_chat.ipynb)
+
+## Project 7: Generative and Summarize tasks for text using model LLM Project
+- **Description**: Usage That LLM model gpt2 for generative text task and facebook/bart-large-cnn model for summarize text task
+- **Libraries Used**:
+  - Pretrained Model: gpt2 and facebook/bart-large-cnn
+  - Deep Learning: pytorch, transformers
+- [Usage Example by gpt-2 and  facebook/bart-large-cnn Notebook](https://github.com/JPP-J/deep-_learning_project/blob/1e01fa8261bb942b458392506449533f4999f926/DL_6_summarize_gen_text.ipynb)
