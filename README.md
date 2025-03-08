@@ -78,3 +78,11 @@ This repo is home to the code that accompanies Jidapa's *Deep Learining Project*
   - Pretrained Model: gpt2 and facebook/bart-large-cnn
   - Deep Learning: pytorch, transformers
 - [Usage Example by gpt-2 and  facebook/bart-large-cnn Notebook](https://github.com/JPP-J/deep-_learning_project/blob/1e01fa8261bb942b458392506449533f4999f926/DL_6_summarize_gen_text.ipynb)
+
+## Project 8: OCR extract text from picture
+- **Description**: Usage tessaract for extract text task from picture link
+- **Libraries Used**:
+  - image processing: opencv-python
+  - Optical Character Recognition (OCR): pytesseract
+  - web development and networking:  flask, flask-ngrok, pyngrok
+- [Hand on code demo OCR Notebook](https://github.com/JPP-J/deep-_learning_project/blob/9d1283af5a17c58d65ed4b70117792435cd24151/DL_7_OCR.ipynb)
