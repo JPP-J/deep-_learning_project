@@ -25,7 +25,6 @@ class KerasClassifierWrapper(BaseEstimator, ClassifierMixin):
             # Input Layer
             # Input(shape=(self.input_dim,)),                             # Input optional
             Dense(6, input_dim=self.input_dim, activation='relu'),  # Input
-            Dropout(0.3),
 
             # First Hidden Layer (Dense layer/Fully connected layer)
             Dense(8, activation='relu'),    # ReLU activation: Common for hidden layers

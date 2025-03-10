@@ -1,5 +1,19 @@
 >ANN_model.py:
 
+example dataset:
+         age    fnlwgt  education_num  ...  capital_loss  hours_per_week  label
+0  0.697613  0.023850      -0.202130  ...     -0.267624        0.693308   >50K
+1  1.246420  1.366554      -0.573692  ...      3.546163        0.693308   >50K
+2 -0.007997  0.172157       0.540995  ...      3.728060        1.537879   >50K
+3 -1.262414  0.842875      -0.202130  ...     -0.267624        0.524394   >50K
+4 -0.478403 -0.431269       1.284119  ...     -0.267624       -0.573548   >50K
+
+[5 rows x 7 columns]
+columns name: ['age' 'fnlwgt' 'education_num' 'capital_gain' 'capital_loss'
+ 'hours_per_week' 'label']
+labels size: (array(['<=50K', '>50K'], dtype=object), array([501, 499]))
+
+
 Test accuracy: 0.50
 
 Model: "sequential"
@@ -32,6 +46,92 @@ Layer: dense_2, Type: Dense
 Test Loss: 0.5189
 Test Accuracy: 0.7233
 
+> ANN_model2.py
+example dataset:
+    id   age          job  marital  ... pdays previous  poutcome   y
+0   1  30.0   unemployed  married  ...    -1        0   unknown  no
+1   2  33.0     services  married  ...   339        4   failure  no
+2   3  35.0   management   single  ...   330        1   failure  no
+3   4  30.0   management  married  ...    -1        0   unknown  no
+4   5  59.0  blue-collar  married  ...    -1        0   unknown  no
+
+[5 rows x 18 columns]
+
+columns name: ['id' 'age' 'job' 'marital' 'education' 'default' 'balance' 'housing'
+ 'loan' 'contact' 'day' 'month' 'duration' 'campaign' 'pdays' 'previous'
+ 'poutcome' 'y']
+
+target: ['no' 'yes']
+shape: (4521, 18)
+
+Null data:
+id            0
+age          39
+job           0
+marital       0
+education     0
+default       0
+balance       0
+housing       0
+loan          0
+contact       0
+day           0
+month         0
+duration      0
+campaign      0
+pdays         0
+previous      0
+poutcome      0
+y             0
+
+dtype: int64
+columns:  Index(['age', 'job', 'marital', 'education', 'balance', 'housing', 'loan',
+       'campaign', 'pdays', 'previous', 'poutcome', 'y'],
+      dtype='object')
+
+cat:  ['job' 'marital' 'education' 'housing' 'loan' 'poutcome' 'campaign']
+num:  ['age' 'balance' 'pdays' 'previous']
+  self.scaler = GradScaler()  # For mixed precision training
+Initial load data....
+Start training data....
+  with autocast():  # Mixed precision
+Epoch 1/10, Train Loss: 0.8349, Train Acc: 0.8746, Val Loss: 0.7578, Val Acc: 0.8803
+Epoch 2/10, Train Loss: 0.7310, Train Acc: 0.8871, Val Loss: 0.7048, Val Acc: 0.8803
+Epoch 3/10, Train Loss: 0.7050, Train Acc: 0.8871, Val Loss: 0.6963, Val Acc: 0.8803
+Epoch 4/10, Train Loss: 0.6996, Train Acc: 0.8871, Val Loss: 0.6944, Val Acc: 0.8803
+Epoch 5/10, Train Loss: 0.6969, Train Acc: 0.8871, Val Loss: 0.6937, Val Acc: 0.8803
+Epoch 6/10, Train Loss: 0.6958, Train Acc: 0.8871, Val Loss: 0.6935, Val Acc: 0.8803
+Epoch 7/10, Train Loss: 0.6949, Train Acc: 0.8871, Val Loss: 0.6933, Val Acc: 0.8803
+Epoch 8/10, Train Loss: 0.6944, Train Acc: 0.8871, Val Loss: 0.6933, Val Acc: 0.8803
+Epoch 9/10, Train Loss: 0.6949, Train Acc: 0.8871, Val Loss: 0.6932, Val Acc: 0.8803
+Epoch 10/10, Train Loss: 0.6941, Train Acc: 0.8871, Val Loss: 0.6932, Val Acc: 0.8803
+Finished training data....
+
+Model training complete..........
+Model and training history saved!
+
+Feature names after preprocessing: ['cat__job' 'cat__marital' 'cat__education' 'cat__housing' 'cat__loan'
+ 'cat__poutcome' 'cat__campaign' 'num__age' 'num__balance' 'num__pdays'
+ 'num__previous']
+
+ Model get prediction..........
+[[0]
+ [0]
+ [0]
+ [0]
+ [0]]
+
+ >> use_model.py
+Model Architecture:
+TorchModel(
+  (fc1): Linear(in_features=11, out_features=6, bias=True)
+  (fc2): Linear(in_features=6, out_features=6, bias=True)
+  (dropout): Dropout(p=0.3, inplace=False)
+  (fc3): Linear(in_features=6, out_features=1, bias=True)
+)
+
+Model get prediction..........
+[0 0 0 0 0]
 
 > CNN_model.py :
 
