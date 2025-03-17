@@ -14,7 +14,7 @@ This repo is home to the code that accompanies Jidapa's *Deep Learining Project*
   - [ANN_model.py](https://github.com/JPP-J/deep-_learning_project/blob/1e06ac3f6590fd3618c403e7f454b44b0299ea12/ANN_model.py) and [ANN_usage.py](https://github.com/JPP-J/deep-_learning_project/blob/1e06ac3f6590fd3618c403e7f454b44b0299ea12/ANN_usage.py) (tensorflow building model)
   - [ANN_model2.py](https://github.com/JPP-J/deep-_learning_project/blob/e2743b2a9e9a4f1b4dc9b68804bd7e33ef04c086/ANN_model2.py) (pytorch building model)
   - [Dockerfile](https://github.com/JPP-J/deep-_learning_project/blob/4334fed9acc6ac7abee6a4f7bdb7f211c8b525e4/Dockerfile)
-  - [ANN and CNN Report](https://drive.google.com/file/d/1z4KdqlYg3F4nBzVYaPEvUQAG2rQdejAC/view?usp=sharing) (rapid miner processes and above python code demo results)
+  - [ANN and CNN Report](https://drive.google.com/file/d/1T1dkZxAcpdSUJ2gxWtfwASa8cqKCNaHt/view?usp=sharing) (rapid miner processes and above python code demo results)
 
 ## Project 2: CNN model Project
 - **Description**: Building CNN model to classified image associated on datatset MNIST identified hand written picture of number 0-9 with tensorflow
@@ -29,7 +29,7 @@ This repo is home to the code that accompanies Jidapa's *Deep Learining Project*
   - datatset [MNIST training ](https://github.com/JPP-J/deep-_learning_project/tree/1e06ac3f6590fd3618c403e7f454b44b0299ea12/data/MNIST%20-%20JPG%20-%20training), [MNIST testing](https://github.com/JPP-J/deep-_learning_project/tree/1e06ac3f6590fd3618c403e7f454b44b0299ea12/data/MNIST%20-%20JPG%20-%20training) 
   -  CNN [CNN_model.py](https://github.com/JPP-J/deep-_learning_project/blob/1e06ac3f6590fd3618c403e7f454b44b0299ea12/CNN_model.py) and [CNN_usage.py](https://github.com/JPP-J/deep-_learning_project/blob/1e06ac3f6590fd3618c403e7f454b44b0299ea12/CNN_usage.py) (tensorflow building model)
   - [Dockerfile](https://github.com/JPP-J/deep-_learning_project/blob/4334fed9acc6ac7abee6a4f7bdb7f211c8b525e4/Dockerfile)
-  - [ANN and CNN Report](https://drive.google.com/file/d/1z4KdqlYg3F4nBzVYaPEvUQAG2rQdejAC/view?usp=sharing) (rapid miner processes and above python code demo results)
+  - [ANN and CNN Report](https://drive.google.com/file/d/1T1dkZxAcpdSUJ2gxWtfwASa8cqKCNaHt/view?usp=sharing) (rapid miner processes and above python code demo results)
 
      
 ## Project 3: Image Classification Project
