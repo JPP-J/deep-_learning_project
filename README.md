@@ -17,7 +17,7 @@ This repo is home to the code that accompanies Jidapa's *Deep Learining Project*
   - [ANN and CNN Report](https://drive.google.com/file/d/1T1dkZxAcpdSUJ2gxWtfwASa8cqKCNaHt/view?usp=sharing) (rapid miner processes and above python code demo results)
 
 ## Project 2: CNN model Project
-- **Description**: Building CNN model to classified image associated on datatset MNIST identified hand written picture of number 0-9 with tensorflow
+- **Description**: Building CNN model to classified image associated on datatset MNIST identified hand written picture of number 0-9 with tensorflow achieved accuracy of prediction up to 99.00%
 - **Libraries Used**:
   - Data Analysis: pandas, NumPy
   - Visualization: matplotlib, seaborn
