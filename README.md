@@ -95,6 +95,7 @@ This repo is home to the code that accompanies Jidapa's *Deep Learining Project*
   - Optical Character Recognition (OCR): pytesseract
   - web development and networking:  flask, flask-ngrok, pyngrok
 - [Hand on code demo OCR Notebook](https://github.com/JPP-J/deep-_learning_project/blob/9d1283af5a17c58d65ed4b70117792435cd24151/DL_7_OCR.ipynb)
+- [Update implement OCR on example webpage](https://github.com/JPP-J/OCR1_project.git)
 
 ## Project 10: Object Dectection Realtime
 - **Description**: screen recording video from personal CCTV through application and integrate with yolov8n to do object detection in realtime 
