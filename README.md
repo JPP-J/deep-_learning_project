@@ -94,8 +94,10 @@ This repo is home to the code that accompanies Jidapa's *Deep Learining Project*
   - image processing: opencv-python
   - Optical Character Recognition (OCR): pytesseract
   - web development and networking:  flask, flask-ngrok, pyngrok
+  - WSGI (Web Server Gateway Interface): Gunicorn, Nginx
+  - Deployment on: EC2-AWS
 - [Hand on code demo OCR Notebook](https://github.com/JPP-J/deep-_learning_project/blob/9d1283af5a17c58d65ed4b70117792435cd24151/DL_7_OCR.ipynb)
-- [Update implement OCR on example webpage repo](https://github.com/JPP-J/OCR1_project.git)
+- [Update implement OCR on example webpage demo](https://github.com/JPP-J/deep-_learning_project/blob/87079714bbbb1d380c1669712c17a2a81ffe9424/DL_7-2_OCR_update.ipynb)
 
 ## Project 10: Object Dectection Realtime
 - **Description**: screen recording video from personal CCTV through application and integrate with yolov8n to do object detection in realtime 
