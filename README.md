@@ -107,3 +107,10 @@ This repo is home to the code that accompanies Jidapa's *Deep Learining Project*
   - Pretrained Model:  yolov8n
   - Deep Learning: pytorch, ultralytics, yolo
 - [Details in Object Dectection Realtime Project repo](https://github.com/JPP-J/object_dectection_realtime_project.git)
+
+## Project 11: GEMINI-API Projects
+- **Description**: hands on python code demo to create chat with GEMINI-API AI with preserve history chat of previously chat
+  - Data Handling: json
+  - Environment Handling: dotenv
+  - Deep Learning/AI: google-genai
+- [Details in GEMINI-API Projects repo](https://github.com/JPP-J/DL-2_GEMINI_project/tree/fc5de417f846df2bc0acc27b16791b3ae0105399)
