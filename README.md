@@ -97,7 +97,7 @@ This repo is home to the code that accompanies Jidapa's *Deep Learining Project*
   - WSGI (Web Server Gateway Interface): Gunicorn, Nginx
   - Deployment on: EC2-AWS
 - [Hand on code demo OCR Notebook](https://github.com/JPP-J/deep-_learning_project/blob/9d1283af5a17c58d65ed4b70117792435cd24151/DL_7_OCR.ipynb)
-- [Update implement OCR on example webpage demo](https://github.com/JPP-J/deep-_learning_project/blob/87079714bbbb1d380c1669712c17a2a81ffe9424/DL_7-2_OCR_update.ipynb)
+- [Update implement OCR on example webpage demo notebook](https://github.com/JPP-J/deep-_learning_project/blob/87079714bbbb1d380c1669712c17a2a81ffe9424/DL_7-2_OCR_update.ipynb)
 
 ## Project 10: Object Dectection Realtime
 - **Description**: screen recording video from personal CCTV through application and integrate with yolov8n to do object detection in realtime 
@@ -113,4 +113,19 @@ This repo is home to the code that accompanies Jidapa's *Deep Learining Project*
   - Data Handling: json
   - Environment Handling: dotenv
   - Deep Learning/AI: google-genai
+  - model: gemini-2.0-flash
 - [Details in GEMINI-API Projects repo](https://github.com/JPP-J/DL-2_GEMINI_project/tree/fc5de417f846df2bc0acc27b16791b3ae0105399)
+
+## Project 12: Chat with LLM Projects
+- **Description**: hands on python code demo to create chat with LLM model with preserve history chat of previously chat
+  - Processing: torch-cuda
+  - Deep Learning/AI: transformers
+  - Model: Qwen/Qwen2.5
+- [Hand on code demo chat withh LLM notebook](https://github.com/JPP-J/deep-_learning_project/blob/3ec36bdc7ff6c2580fa47d9d91680ca5e8d8c317/DL_8_chat_LLM.ipynb)
+
+## Project 13: Prompt-based Generation with LLM Projects
+- **Description**: hands on python code demo to Prompt-based Generation with Qwen/Qwen2.5 model
+  - Processing: torch-cuda
+  - Deep Learning/AI: transformers
+  - model: Qwen/Qwen2.5
+- [Hand on Code demo propmt based generation notebook](https://github.com/JPP-J/deep-_learning_project/blob/3ec36bdc7ff6c2580fa47d9d91680ca5e8d8c317/DL_9_Prompt_based_Generation.ipynb)
