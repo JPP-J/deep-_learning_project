@@ -51,7 +51,7 @@ This repo is home to the code that accompanies Jidapa's *Deep Learining Project*
   - Deep Learning: `pytorch`, `ultralytics, yolo`
 - [Hand on code demo Notebook](https://github.com/JPP-J/deep-_learning_project/blob/5dafda7bea3fadb6fafba5723149e65eac65f9e0/DL_2_Oblect_dectection.ipynb)
 
-## Project 5: Fine-tuning pretrained model Project
+## Project 5: Fine-tuning pretrained object dectection model Project
 - **Description**: Fine-tuning pretrained model with smoke dataset picture from roboflow and test accuracy achieved at 90%
 - **Libraries Used**:
   - Data Analysis: `pandas`, `NumPy`
