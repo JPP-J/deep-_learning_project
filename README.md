@@ -117,7 +117,7 @@ This repo is home to the code that accompanies Jidapa's *Deep Learining Project*
   - Environment Handling: `dotenv`
   - Deep Learning/AI: `google-genai`
   - model: gemini-2.0-flash
-- [Repository](https://github.com/JPP-J/DL-2_GEMINI_project/tree/fc5de417f846df2bc0acc27b16791b3ae0105399)
+- [Repository](https://github.com/JPP-J/DL-2_GEMINI_project)
 
 ## Project 12: Chat with LLM Projects
 - **Description**: hands on python code demo to create chat with LLM model with preserve history chat of previously chat
