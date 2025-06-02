@@ -8,7 +8,7 @@
 This repo is home to the code that accompanies Jidapa's *Deep Learining Project* :
 
 ## Project 1: ANN model Project 
-- **Description**: Building ANN model associated on individual income dataset(to defines target label >50k or <=50k) for [ANN_model.py](ANN_model.py) with tensorflow(kearas) and individual credit bank dataset (to defines target label yes or no for credit ability) [ANN_model2.py](ANN_model2.py) with pytorch can acheived accuracy both tarin and validation stage up to 88.00%
+- **Description**: Building ANN model associated on individual income dataset(to defines target label >50k or <=50k) for [ANN_model.py](ANN_model.py) with tensorflow(keras) and individual credit bank dataset (to defines target label yes or no for credit ability) [ANN_model2.py](ANN_model2.py) with pytorch can acheived accuracy both tarin and validation stage up to 88.00%
 - **Libraries Used**:
   - Data Analysis: `pandas`, `NumPy`
   - Visualization: `matplotlib`, `seaborn`
