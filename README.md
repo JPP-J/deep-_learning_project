@@ -54,7 +54,7 @@ This repo is home to the code that accompanies Jidapa's *Deep Learining Project*
 ## Project 3: Image Classification with Pretrained ResNet-50d 🖼️
 
 - **Description**:  
-  Implemented an image classification system using the **ResNet-50d** pretrained model to classify objects from an ImageNet-style dataset. This project demonstrates transfer learning by leveraging a high-performance convolutional backbone for efficient and accurate image recognition.
+  Prototype implemented an image classification system using the **ResNet-50d** pretrained model to classify objects from an ImageNet-style dataset. This project demonstrates transfer learning by leveraging a high-performance convolutional backbone for efficient and accurate image recognition.
 
   The pipeline includes data preprocessing, model fine-tuning, prediction, and performance evaluation using PyTorch and `timm`.
 
@@ -71,7 +71,7 @@ This repo is home to the code that accompanies Jidapa's *Deep Learining Project*
 ## Project 4: Object Detection Using YOLOv8n 🚦
 
 - **Description**:  
-  Built an object detection system using the **YOLOv8n** (You Only Look Once) model to identify and locate multiple objects within images. Leveraged a pretrained YOLOv8n architecture from Ultralytics for fast and accurate detection on custom and public image data.
+  Prototype built an object detection system using the **YOLOv8n** (You Only Look Once) model to identify and locate multiple objects within images. Leveraged a pretrained YOLOv8n architecture from Ultralytics for fast and accurate detection on custom and public image data.
 
   The project demonstrates real-time object localization, bounding box prediction, and confidence scoring, suitable for surveillance, automation, or visual analytics tasks.
 
