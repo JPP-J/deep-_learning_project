@@ -278,7 +278,7 @@ This repo is home to the code that accompanies Jidapa's *Deep Learining Project*
   - Using `transformers.pipeline()` for quick abstraction
   - Applying prompt engineering patterns like zero-shot, few-shot, and instruction-style prompts
 
-  - **Prototype Scope**:  
+- **Prototype Scope**:  
   This prototype explores how to generate coherent text using various prompt-based techniques with Qwen/Qwen2.5 LLMs. It demonstrates direct and abstracted model usage to support flexible experimentation in language generation tasks.
 
   The notebook offers modular functions and examples for each generation approach.
