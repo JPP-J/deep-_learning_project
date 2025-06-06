@@ -56,7 +56,7 @@ This repo is home to the code that accompanies Jidapa's *Deep Learining Project*
 - **Description**:  
   This prototype demonstrates the implementation of an image classification system using the **ResNet-50d** pretrained model. It applies transfer learning on an ImageNet-style dataset to classify visual objects efficiently. The goal is to evaluate the feasibility and accuracy of using high-performance pretrained CNNs in custom classification scenarios.
 
-  The prototype focuses on:
+- **The prototype focuses on**:
   - Loading and preprocessing input images
   - Using `timm` to load and fine-tune ResNet-50d
   - Performing inference and evaluating results
@@ -76,7 +76,7 @@ This repo is home to the code that accompanies Jidapa's *Deep Learining Project*
 - **Description**:  
   This prototype implements an object detection pipeline using **YOLOv8n**, a lightweight and real-time object detection model from Ultralytics. The system is designed to detect and localize multiple object classes within static images, offering practical insights into integrating YOLOv8 models in detection-based workflows.
 
-  The prototype scope includes:
+- **The prototype scope includes**:
   - Loading pretrained YOLOv8n weights
   - Running inference on test images
   - Visualizing detections with bounding boxes and confidence scores
