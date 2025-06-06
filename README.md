@@ -54,9 +54,12 @@ This repo is home to the code that accompanies Jidapa's *Deep Learining Project*
 ## Project 3: Image Classification with Pretrained ResNet-50d 🖼️
 
 - **Description**:  
-  Prototype implemented an image classification system using the **ResNet-50d** pretrained model to classify objects from an ImageNet-style dataset. This project demonstrates transfer learning by leveraging a high-performance convolutional backbone for efficient and accurate image recognition.
+  This prototype demonstrates the implementation of an image classification system using the **ResNet-50d** pretrained model. It applies transfer learning on an ImageNet-style dataset to classify visual objects efficiently. The goal is to evaluate the feasibility and accuracy of using high-performance pretrained CNNs in custom classification scenarios.
 
-  The pipeline includes data preprocessing, model fine-tuning, prediction, and performance evaluation using PyTorch and `timm`.
+  The prototype focuses on:
+  - Loading and preprocessing input images
+  - Using `timm` to load and fine-tune ResNet-50d
+  - Performing inference and evaluating results
 
 - **Libraries Used**:
   - **Data Analysis:** `pandas`, `NumPy`
@@ -71,9 +74,12 @@ This repo is home to the code that accompanies Jidapa's *Deep Learining Project*
 ## Project 4: Object Detection Using YOLOv8n 🚦
 
 - **Description**:  
-  Prototype built an object detection system using the **YOLOv8n** (You Only Look Once) model to identify and locate multiple objects within images. Leveraged a pretrained YOLOv8n architecture from Ultralytics for fast and accurate detection on custom and public image data.
+  This prototype implements an object detection pipeline using **YOLOv8n**, a lightweight and real-time object detection model from Ultralytics. The system is designed to detect and localize multiple object classes within static images, offering practical insights into integrating YOLOv8 models in detection-based workflows.
 
-  The project demonstrates real-time object localization, bounding box prediction, and confidence scoring, suitable for surveillance, automation, or visual analytics tasks.
+  The prototype scope includes:
+  - Loading pretrained YOLOv8n weights
+  - Running inference on test images
+  - Visualizing detections with bounding boxes and confidence scores
 
 - **Libraries Used**:
   - **Data Analysis:** `pandas`, `NumPy`
