@@ -235,7 +235,7 @@ This repo is home to the code that accompanies Jidapa's *Deep Learining Project*
   - Deep Learning Frameworks: `pytorch`, `ultralytics`, `yolo`
 
 - **Resources**:  
-  - Code Repository: [GitHub - object_detection_realtime_project](https://github.com/JPP-J/object_dectection_realtime_project.git)
+  - Repository: [GitHub - object_detection_realtime_project](https://github.com/JPP-J/object_dectection_realtime_project.git)
 
 ## Project 11: GEMINI-API Project
 - **Description**: Hands-on Python demo showcasing a chat application using the GEMINI-API AI. Supports preserving conversation history to maintain context across chat sessions.
@@ -248,7 +248,7 @@ This repo is home to the code that accompanies Jidapa's *Deep Learining Project*
   - Manages API keys securely via environment variables
   - Preserves past chat history for context-aware AI responses
 - **Resources**:
-  - **Repository**: [GitHub - DL-2_GEMINI_project](https://github.com/JPP-J/DL-2_GEMINI_project)
+  - Repository: [GitHub - DL-2_GEMINI_project](https://github.com/JPP-J/DL-2_GEMINI_project)
 
 
 ## Project 12: Chat with LLM Projects 💬
