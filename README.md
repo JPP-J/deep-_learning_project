@@ -276,12 +276,10 @@ This repo is home to the code that accompanies Jidapa's *Deep Learining Project*
   A detailed Python prototype showing multiple methods to perform text generation via prompting. Includes:
   - Loading models/tokenizers directly for custom control
   - Using `transformers.pipeline()` for quick abstraction
-  - Applying prompt engineering patterns like zero-shot, few-shot, and instruction-style prompts
+  - The notebook offers modular functions and examples for each generation approach.
 
 - **Prototype Scope**:  
   This prototype explores how to generate coherent text using various prompt-based techniques with Qwen/Qwen2.5 LLMs. It demonstrates direct and abstracted model usage to support flexible experimentation in language generation tasks.
-
-  The notebook offers modular functions and examples for each generation approach.
 
 - **Libraries Used**:
   - **Processing:** `torch-cuda`
