@@ -7,140 +7,279 @@
 
 This repo is home to the code that accompanies Jidapa's *Deep Learining Project* :
 
-## Project 1: ANN model Project 
-- **Description**: Building ANN model associated on individual income dataset(to defines target label >50k or <=50k) for [ANN_model.py](ANN_model.py) with tensorflow(keras) and individual credit bank dataset (to defines target label yes or no for credit ability) [ANN_model2.py](ANN_model2.py) with pytorch can acheived accuracy both tarin and validation stage up to 88.00%
-- **Libraries Used**:
-  - Data Analysis: `pandas`, `NumPy`
-  - Visualization: `matplotlib`, `seaborn`
-  - Model Handling: `pickle`, `joblib`
-  - Deep Learning: `tensorflow`, `keras`, `pytorch`
-  - Model Evaluation: cross_val_score, Loss, Accuracy
-- **Provides**:
-  - [ANN_model.py](ANN_model.py) and [ANN_usage.py](ANN_usage.py) (tensorflow building model)
-  - [ANN_model2.py](ANN_model2.py) (pytorch building model)
-  - [Dockerfile](Dockerfile)
-  - [ANN and CNN Report](https://drive.google.com/file/d/1T1dkZxAcpdSUJ2gxWtfwASa8cqKCNaHt/view?usp=sharing) (rapid miner processes and above python code demo results)
+## Project 1: Artificial Neural Network (ANN) Classification
 
-## Project 2: CNN model Project
-- **Description**: Building CNN model to classified image associated on datatset MNIST identified hand written picture of number 0-9 with tensorflow achieved accuracy of prediction up to 99.00%
-- **Libraries Used**:
-  - Data Analysis: `pandas`, `NumPy`
-  - Visualization: `matplotlib`, `seaborn`
-  - Image Handling: `PIL`
-  - Model Handling: `pickle`, `joblib`
-  - Deep Learning: `tensorflow`, `keras`
-  - Model Evaluation: cross_val_score, Loss, Accuracy
-- **Provides**:
-  - datatset [MNIST training ](data/MNIST%20-%20JPG%20-%20training), [MNIST testing](data/MNIST%20-%20JPG%20-%20training) 
-  -  CNN [CNN_model.py](CNN_usage.py) (tensorflow building model)
-  - [Dockerfile](Dockerfile)
-  - [ANN and CNN Report](https://drive.google.com/file/d/1T1dkZxAcpdSUJ2gxWtfwASa8cqKCNaHt/view?usp=sharing) (rapid miner processes and above python code demo results)
+- **Description**:  
+  Developed two ANN classification models:
+  - **Model 1:** Predicts individual income levels (target: >50k or ≤50k) using TensorFlow and Keras.
+  - **Model 2:** Predicts credit eligibility (target: yes or no) based on bank credit data using PyTorch.
 
-     
-## Project 3: Image Classification Project 🖼️
-- **Description**: For image classification tasks on resnet50d model
-- **Libraries Used**:
-  - Data Analysis: `pandas`, `NumPy`
-  - Visualization: `matplotlib`
-  - Image Handling: `PIL`
-  - Pretrained Model: ResNet-50d
-  - Deep Learning: `pytorch`, `torchvision`, `timm`
-- [Hand on code demo Notebook](DL_1_Classified_object_imagenet.ipynb)
+  Both models achieved up to **88% accuracy** on training and validation datasets. Implemented robust data preprocessing, model training, evaluation, and result analysis pipelines.
 
-## Project 4: Object Detection Project
-- **Description**:  Object Detection on yolov8n model
 - **Libraries Used**:
-  - Data Analysis: `pandas`, `NumPy`
-  - Image Handling: `PIL`
-  - Pretrained Model:  YOLOv8n
-  - Deep Learning: `pytorch`, `ultralytics, yolo`
-- [Hand on code demo Notebook](DL_2_Oblect_dectection.ipynb)
+  - **Data Analysis:** `pandas`, `NumPy`
+  - **Visualization:** `matplotlib`, `seaborn`
+  - **Model Handling:** `pickle`, `joblib`
+  - **Deep Learning:** `tensorflow`, `keras`, `pytorch`
+  - **Model Evaluation:** `cross_val_score`, `Loss`, `Accuracy`
 
-## Project 5: Fine-tuning pretrained object dectection model Project
-- **Description**: Fine-tuning pretrained model with smoke dataset picture from roboflow and test accuracy achieved at 90%
-- **Libraries Used**:
-  - Data Analysis: `pandas`, `NumPy`
-  - Image Handling: `PIL`
-  - Pretrained Model:  YOLOv8n
-  - Deep Learning: `pytorch`, `ultralytics`, `yolo`
-  - Computer Vision Tools: `roboflow`
-  - Model Evaluation: Instances, Box(P), Box(R), mAP50(mean Average Precision at IoU = 0.5) and mAP50-95(mean Average Precision from IoU 0.5 to 0.95)
-- [Hand on code demo Notebook](DL_3_train_smoke_dataset.ipynb)
+- **Deliverables**:
+  - TensorFlow-based model: [`ANN_model.py`](ANN_model.py), [`ANN_usage.py`](ANN_usage.py)
+  - PyTorch-based model: [`ANN_model2.py`](ANN_model2.py)
+  - Deployment setup: [`Dockerfile`](Dockerfile)
+  - Final report: [ANN and CNN Report (PDF)](https://drive.google.com/file/d/1T1dkZxAcpdSUJ2gxWtfwASa8cqKCNaHt/view?usp=sharing)  
+    *(Includes process explanation using RapidMiner and Python implementation results)*
 
-## Project 6: Image Search Project
-- **Description**:  Image Search from video with CLIP Pre-trained Model
-- **Libraries Used**:
-  - Data Analysis: `pandas`, `NumPy`
-  - Download Video: `yt_dlp`
-  - Image Handling: `PIL`, `cv2`
-  - Pretrained Model:  CLIP Pre-trained
-  - Deep Learning: `pytorch`, `CLIP`, `torchvision`, `transformers`
-- [Hand on code demo Notebook](DL_4_Image_search.ipynb)
 
-## Project 7: Thai LLM model usage Project
-- **Description**: Usage That LLM model with openthaigpt-1.0.0-7b-chat with hugging face
-- **Libraries Used**:
-  - Data Analysis: `pandas`, `NumPy`
-  - GUI Interface: `gradio`
-  - Pretrained Model:  openthaigpt-1.0.0-7b-chat
-  - Deep Learning: `pytorch`, `llama-index`, `llama-cpp-python`
-- [Hand on code demo Notebook](DL_5_WITH_openthaigpt_1_0_0_7b_chat.ipynb)
+## Project 2: Convolutional Neural Network (CNN) for Handwritten Digit Recognition
 
-## Project 8: Generative and Summarize tasks for text using model LLM Project
-- **Description**: Usage That LLM model gpt2 for generative text task and facebook/bart-large-cnn model for summarize text task
-- **Libraries Used**:
-  - Pretrained Model: gpt2 and facebook/bart-large-cnn
-  - Deep Learning: `pytorch`, `transformers`
-- [Hand on code demo Notebook](DL_6_summarize_gen_text.ipynb)
+- **Description**:  
+  Built a Convolutional Neural Network (CNN) model using **TensorFlow** and **Keras** to classify handwritten digits (0–9) from the **MNIST dataset**. The model achieved a **prediction accuracy of up to 99%**, demonstrating high performance in image classification tasks.
 
-## Project 9: OCR extract text from picture
-- **Description**: Usage tessaract for extract text task from picture link
 - **Libraries Used**:
-  - image processing: `opencv-python`
+  - **Data Analysis:** `pandas`, `NumPy`
+  - **Visualization:** `matplotlib`, `seaborn`
+  - **Image Handling:** `PIL`
+  - **Model Handling:** `pickle`, `joblib`
+  - **Deep Learning:** `tensorflow`, `keras`
+  - **Model Evaluation:** `cross_val_score`, `Loss`, `Accuracy`
+
+- **Deliverables**:
+  - Dataset: [`MNIST Training`](data/MNIST%20-%20JPG%20-%20training), [`MNIST Testing`](data/MNIST%20-%20JPG%20-%20training)
+  - CNN Implementation: [`CNN_model.py`](CNN_usage.py)
+  - Deployment Setup: [`Dockerfile`](Dockerfile)
+  - Final Report: [`ANN and CNN Report (PDF)`](https://drive.google.com/file/d/1T1dkZxAcpdSUJ2gxWtfwASa8cqKCNaHt/view?usp=sharing)  
+    *(Includes model performance analysis, data pipeline, and process summary using RapidMiner and Python)*
+
+## Project 3: Image Classification with Pretrained ResNet-50d 🖼️
+
+- **Description**:  
+  Implemented an image classification system using the **ResNet-50d** pretrained model to classify objects from an ImageNet-style dataset. This project demonstrates transfer learning by leveraging a high-performance convolutional backbone for efficient and accurate image recognition.
+
+  The pipeline includes data preprocessing, model fine-tuning, prediction, and performance evaluation using PyTorch and `timm`.
+
+- **Libraries Used**:
+  - **Data Analysis:** `pandas`, `NumPy`
+  - **Visualization:** `matplotlib`
+  - **Image Handling:** `PIL`
+  - **Pretrained Model & Training:** `pytorch`, `torchvision`, `timm`
+
+- **Deliverables**:
+  - Hands-on Demo Notebook: [`DL_1_Classified_object_imagenet.ipynb`](DL_1_Classified_object_imagenet.ipynb)
+
+
+## Project 4: Object Detection Using YOLOv8n 🚦
+
+- **Description**:  
+  Built an object detection system using the **YOLOv8n** (You Only Look Once) model to identify and locate multiple objects within images. Leveraged a pretrained YOLOv8n architecture from Ultralytics for fast and accurate detection on custom and public image data.
+
+  The project demonstrates real-time object localization, bounding box prediction, and confidence scoring, suitable for surveillance, automation, or visual analytics tasks.
+
+- **Libraries Used**:
+  - **Data Analysis:** `pandas`, `NumPy`
+  - **Image Handling:** `PIL`
+  - **Pretrained Model:** `YOLOv8n`
+  - **Deep Learning & Model Inference:** `pytorch`, `ultralytics`, `yolo`
+
+- **Deliverables**:
+  - Hands-on Demo Notebook: [`DL_2_Oblect_dectection.ipynb`](DL_2_Oblect_dectection.ipynb)
+
+
+## Project 5: Fine-Tuning YOLOv8n for Smoke Detection 🔥
+
+- **Description**:  
+  Fine-tuned a pretrained **YOLOv8n** model on a custom **smoke detection dataset** from **Roboflow**, aiming to detect visible smoke in real-world images. The model was trained using the Ultralytics YOLOv8 framework and validated on a GPU (Tesla T4), delivering robust results suitable for industrial safety and early fire detection systems.
+
+- **Results**:  
+  - **Precision (Box(P))**: 0.986  
+  - **Recall (Box(R))**: 0.910  
+  - **mAP@0.5**: 0.965  
+  - **mAP@0.5:0.95**: 0.730  
+  - **Inference Speed**: ~5 ms/image (Tesla T4)  
+  - **Confusion Matrix**:
+  
+    |               | Pred: Smoke (0) | Pred: Background (1) |
+    |---------------|------------------|-----------------------|
+    | **True: Smoke (0)**     | 150                | 9                     |
+    | **True: Background (1)**| 7                  | 0                     |
+  
+    - The model performs very well in identifying smoke (150/159 correct), but tends to **misclassify background as smoke**, indicating high sensitivity — appropriate for safety-critical use cases where missing smoke is riskier than a false positive.
+
+- **Libraries Used**:
+  - **Data Analysis:** `pandas`, `NumPy`
+  - **Image Handling:** `PIL`
+  - **Deep Learning & Training:** `pytorch`, `ultralytics`, `yolo`
+  - **Computer Vision Platform:** `Roboflow`
+  - **Evaluation Metrics:** `Box(P)`, `Box(R)`, `mAP@0.5`, `mAP@0.5:0.95`, Confusion Matrix
+
+- **Deliverables**:
+  - Demo Notebook: [`DL_3_train_smoke_dataset.ipynb`](DL_3_train_smoke_dataset.ipynb)
+  - Trained Model: `runs/detect/train2/weights/best.pt` in notebook 
+  - Training Logs: `runs/detect/train2/` in notebook
+
+
+## Project 6: Image Search from Video using CLIP 🎥🔍
+
+- **Description**:  
+  A prototype project showcasing **image-based and text-based search** across frames extracted from a YouTube video using the **CLIP (Contrastive Language–Image Pre-training)** model. The system supports relevance feedback to improve search results using label propagation.
+
+- **Key Features**:
+  - Download and extract frames from YouTube videos using `yt-dlp`
+  - Use OpenAI’s CLIP model to embed both text and images into a shared space
+  - Perform image search using:
+    - Text queries (e.g., "a red car")
+    - Image queries (e.g., search using a reference image)
+  - Interactive relevance feedback:
+    - Mark search results as relevant/irrelevant
+    - Use **label propagation** to update scores and refine results
+
+- **Prototype Scope**:
+  - Not a full application — serves as a **quick experimental demo** and proof-of-concept
+  - Great starting point for a video content indexing system or media search engine
+
+- **Libraries Used**:
+  - **Data Handling**: `pandas`, `NumPy`
+  - **Video & Image Handling**: `yt_dlp`, `cv2`, `PIL`
+  - **Visualization**: `plotly`
+  - **Deep Learning & Models**: `pytorch`, `torchvision`, `transformers`, `CLIP`
+
+## Project 7: Thai LLM Model Usage with OpenThaiGPT 🇹🇭🧠
+
+- **Description**:  
+  A prototype project demonstrating how to use the **OpenThaiGPT-1.0.0-7B-Chat** model for Thai language understanding and generation. It includes a **prompt-based interface** implemented with **Gradio**, allowing users to interact with the Thai LLM via a simple web UI.
+
+- **Key Features**:
+  - Loads and runs **OpenThaiGPT-7B-chat** (Hugging Face model) using local inference tools
+  - Supports **prompt-based interaction** with Thai language queries
+  - Simple and responsive **Gradio UI** for interactive chat interface
+  - Lays the foundation for Thai-language applications like virtual assistants, summarizers, or translators
+
+- **Prototype Scope**:
+  - Early-stage prototype focusing on functionality rather than optimization
+  - Intended as a learning and experimentation platform for Thai LLM integration
+
+- **Libraries Used**:
+  - **Data Handling**: `pandas`, `NumPy`
+  - **Web Interface**: `gradio`
+  - **LLM & Backend**:
+    - `pytorch`
+    - `llama-index` (for managing documents/chunks, if needed)
+    - `llama-cpp-python` (for lightweight LLM execution)
+
+- **Deliverables**:
+  - Demo Notebook: [`DL_5_WITH_openthaigpt_1_0_0_7b_chat.ipynb`](DL_5_WITH_openthaigpt_1_0_0_7b_chat.ipynb)
+
+## Project 8: Generative and Summarization Tasks Using LLMs ✍️📄
+
+- **Description**:  
+  This project demonstrates a simple prototype for **text generation** and **summarization** using popular pretrained LLMs:
+  - **Text Generation**: Utilizes the `GPT-2` model for generating free-form text based on custom prompts.
+  - **Text Summarization**: Uses `facebook/bart-large-cnn` to summarize long text inputs into concise summaries.
+
+- **Key Features**:
+  - Implements two core NLP tasks using pretrained models via the `transformers` library
+  - Includes example functions for:
+    - `generate_text(prompt)` – Generate creative or context-aware completions
+    - `summarize_text(input_text)` – Extract key information in a shorter form
+  - Supports experimentation with different decoding methods (e.g., top-k, top-p sampling)
+
+- **Prototype Scope**:
+  - Standalone notebook demonstrating usage
+  - Ideal for content generation, article summarization, or chatbot backend
+
+- **Libraries Used**:
+  - **Model Access & Execution**: `pytorch`, `transformers`
+  - **Models**:
+    - `gpt2` (text generation)
+    - `facebook/bart-large-cnn` (summarization)
+
+- **Deliverables**:
+  - Demo Notebook: [`DL_6_summarize_gen_text.ipynb`](DL_6_summarize_gen_text.ipynb)
+
+## Project 9: OCR Extract Text from Picture 📝
+
+- **Description**:  
+  This project uses Tesseract OCR to extract text from images sourced via URLs. The solution includes a Flask web application deployed with Docker on AWS EC2. Continuous Integration and Deployment (CI/CD) is managed through GitHub Actions, ensuring streamlined updates.
+
+- **Libraries Used**:
+  - Image Processing: `opencv-python`
   - Optical Character Recognition (OCR): `pytesseract`
-  - web development and networking:  `flask`, `flask-ngrok`, `pyngrok`
-  - WSGI (Web Server Gateway Interface): `Gunicorn`, `Nginx`
-  - Deployment on: EC2-AWS
-- [Repository](https://github.com/JPP-J/OCR1_project.git)
-- [Hand on code demo Notebook](DL_7_OCR.ipynb)
+  - Web Development & Networking: `Flask`, `Gunicorn`, `Nginx`
+  - Containers & Deployment: `Docker`, `docker-compose`
+  - CI/CD: GitHub Actions
+  - Deployment Platform: AWS EC2
 
-## Project 10: Object Dectection Realtime
-- **Description**: screen recording video from personal CCTV through application and integrate with yolov8n to do object detection in realtime 
+- **Resources**:
+  - Repository: [GitHub - OCR1_project](https://github.com/JPP-J/OCR1_project.git)
+  - Code Demo Prototype Notebook: [Notebook](DL_7_OCR.ipynb)
+
+
+## Project 10: Object Detection Realtime
+
+- **Description**:  
+  Capture screen recording video from a personal CCTV setup via an application and integrate with YOLOv8n to perform real-time object detection.
+
 - **Libraries Used**:
   - Data Analysis: `pandas`, `NumPy`
-  - image processing: `opencv-python/cv2`
-  - Pretrained Model:  yolov8n
-  - Deep Learning: `pytorch`, `ultralytics`, `yolo`
-- [Repository](https://github.com/JPP-J/object_dectection_realtime_project.git)
+  - Image Processing: `opencv-python` (`cv2`)
+  - Pretrained Model: YOLOv8n
+  - Deep Learning Frameworks: `pytorch`, `ultralytics`, `yolo`
 
-## Project 11: GEMINI-API Projects
-- **Description**: hands on python code demo to create chat with GEMINI-API AI with preserve history chat of previously chat
+- **Resources**:  
+  - Code Repository: [GitHub - object_detection_realtime_project](https://github.com/JPP-J/object_dectection_realtime_project.git)
+
+## Project 11: GEMINI-API Project
+- **Description**: Hands-on Python demo showcasing a chat application using the GEMINI-API AI. Supports preserving conversation history to maintain context across chat sessions.
+- **Libraries Used**:
   - Data Handling: `json`
-  - Environment Handling: `dotenv`
-  - Deep Learning/AI: `google-genai`
-  - model: gemini-2.0-flash
-- [Repository](https://github.com/JPP-J/DL-2_GEMINI_project)
+  - Environment Configuration: `dotenv`
+  - AI & Deep Learning: `google-genai`
+- **Model Used**: `gemini-2.0-flash`
+- **Features**:
+  - Manages API keys securely via environment variables
+  - Preserves past chat history for context-aware AI responses
+- **Repository**: [GitHub - DL-2_GEMINI_project](https://github.com/JPP-J/DL-2_GEMINI_project)
+
 
 ## Project 12: Chat with LLM Projects
-- **Description**: hands on python code demo to create chat with LLM model with preserve history chat of previously chat
+- **Description**: Hands-on Python prototype demonstrating how to build an interactive chat application using large language models (LLMs) with preserved conversation history. This project includes example usage functions to show how to send messages, maintain chat context, and receive model-generated replies. Built with GPU acceleration using `torch-cuda` and leveraging the powerful `transformers` library, it serves as a solid foundation for conversational AI experimentation.
+- **Libraries Used**:
   - Processing: `torch-cuda`
   - Deep Learning/AI: `transformers`
-  - Model: Qwen/Qwen2.5
+- **Models**: Qwen, Qwen2.5
+- **Features**:
+  - Preserves chat history for contextual conversations
+  - Example usage functions demonstrating chat interaction flow
 - [Hand on code demo Notebook](DL_8_chat_LLM.ipynb)
 
 ## Project 13: Prompt-based Generation with LLM Projects
-- **Description**: hands on python code demo to Prompt-based Generation with Qwen/Qwen2.5 model
+- **Description**: Detailed Python prototype demonstrating multiple ways to perform prompt-based text generation with Qwen/Qwen2.5 models. The demo explores different usage methods such as:
+  - Directly loading the model and tokenizer via `transformers` to generate text step-by-step
+  - Using the higher-level `pipeline` API for streamlined generation
+  - Implementing custom prompt engineering techniques (zero-shot, few-shot, instruction tuning)
+  
+  Includes example usage functions for each approach to illustrate how to prepare inputs, generate outputs, and handle responses effectively.
+- **Libraries Used**:
   - Processing: `torch-cuda`
   - Deep Learning/AI: `transformers`
-  - model: Qwen/Qwen2.5
-- [Hand on Code demo Notebook](DL_9_Prompt_based_Generation.ipynb)
+- **Models**: Qwen, Qwen2.5
+- **Features**:
+  - Multiple generation methods: model/tokenizer direct use and pipeline abstraction
+  - Practical prompt engineering examples
+  - Example usage for each method to guide implementation
+- [Hand on code demo Notebook](DL_9_Prompt_based_Generation.ipynb)
+
 
 ## Project 14: RAG-based Chatbot with Ollama and FAISS
-- **Description**: hands on python code demo to build a Retrieval-Augmented Generation (RAG) chatbot using FAISS for vector search and Ollama for context-aware responses. Includes document upload, persistent chat history, and Gradio-based UI.
-  - Processing: `FAISS`, `pythainlp`
+- **Description**: Demo to build a Retrieval-Augmented Generation (RAG) chatbot with vector search via FAISS and context-aware responses through Ollama. Features document upload, persistent chat history, and a Gradio UI.
+- **Libraries Used**:
+  - Processing & NLP: `FAISS`, `pythainlp`
   - Deep Learning/AI: `langchain`, `HuggingFaceEmbeddings`, `ollama`
   - UI: `gradio`
   - DevOps: `Docker`, `Docker Compose`, `GitHub Actions`
-  - Model: `gemma3:1b` (Ollama), `all-MiniLM-L6-v2` (embeddings)
+- **Models**:
+  - Ollama: `gemma3:1b`
+  - Embeddings: `all-MiniLM-L6-v2`
 - [Repository](https://github.com/JPP-J/DL-3_RAG)
+
 
