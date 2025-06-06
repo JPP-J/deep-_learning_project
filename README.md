@@ -247,33 +247,56 @@ This repo is home to the code that accompanies Jidapa's *Deep Learining Project*
 - **Repository**: [GitHub - DL-2_GEMINI_project](https://github.com/JPP-J/DL-2_GEMINI_project)
 
 
-## Project 12: Chat with LLM Projects
-- **Description**: Hands-on Python prototype demonstrating how to build an interactive chat application using large language models (LLMs) with preserved conversation history. This project includes example usage functions to show how to send messages, maintain chat context, and receive model-generated replies. Built with GPU acceleration using `torch-cuda` and leveraging the powerful `transformers` library, it serves as a solid foundation for conversational AI experimentation.
-- **Libraries Used**:
-  - Processing: `torch-cuda`
-  - Deep Learning/AI: `transformers`
-- **Models**: Qwen, Qwen2.5
-- **Features**:
-  - Preserves chat history for contextual conversations
-  - Example usage functions demonstrating chat interaction flow
-- [Hand on code demo Notebook](DL_8_chat_LLM.ipynb)
+## Project 12: Chat with LLM Projects 💬
 
-## Project 13: Prompt-based Generation with LLM Projects
-- **Description**: Detailed Python prototype demonstrating multiple ways to perform prompt-based text generation with Qwen/Qwen2.5 models. The demo explores different usage methods such as:
-  - Directly loading the model and tokenizer via `transformers` to generate text step-by-step
-  - Using the higher-level `pipeline` API for streamlined generation
-  - Implementing custom prompt engineering techniques (zero-shot, few-shot, instruction tuning)
-  
-  Includes example usage functions for each approach to illustrate how to prepare inputs, generate outputs, and handle responses effectively.
+- **Description**:  
+  Hands-on Python prototype showcasing an interactive chat application using the Qwen and Qwen2.5 LLMs. Built with GPU acceleration (`torch-cuda`) and powered by `transformers`, it includes reusable example functions to demonstrate message handling, response generation, and history maintenance.
+
+- **Prototype Scope**:  
+  This prototype demonstrates how to build an interactive chat system using large language models (LLMs) with preserved message history. It simulates human-like conversations by maintaining context between turns and generating context-aware replies.
+
 - **Libraries Used**:
-  - Processing: `torch-cuda`
-  - Deep Learning/AI: `transformers`
+  - **Processing:** `torch-cuda`
+  - **Deep Learning/AI:** `transformers`
+
 - **Models**: Qwen, Qwen2.5
+
 - **Features**:
-  - Multiple generation methods: model/tokenizer direct use and pipeline abstraction
-  - Practical prompt engineering examples
-  - Example usage for each method to guide implementation
-- [Hand on code demo Notebook](DL_9_Prompt_based_Generation.ipynb)
+  - Preserves multi-turn chat history for continuity
+  - Example functions to send/receive messages
+  - Supports conversational AI experimentation
+
+- **Deliverables**:
+  - Hands-on Demo Notebook: [`DL_8_chat_LLM.ipynb`](DL_8_chat_LLM.ipynb)
+
+
+## Project 13: Prompt-based Generation with LLM Projects ✨
+
+- **Description**:  
+  A detailed Python prototype showing multiple methods to perform text generation via prompting. Includes:
+  - Loading models/tokenizers directly for custom control
+  - Using `transformers.pipeline()` for quick abstraction
+  - Applying prompt engineering patterns like zero-shot, few-shot, and instruction-style prompts
+
+  - **Prototype Scope**:  
+  This prototype explores how to generate coherent text using various prompt-based techniques with Qwen/Qwen2.5 LLMs. It demonstrates direct and abstracted model usage to support flexible experimentation in language generation tasks.
+
+  The notebook offers modular functions and examples for each generation approach.
+
+- **Libraries Used**:
+  - **Processing:** `torch-cuda`
+  - **Deep Learning/AI:** `transformers`
+
+- **Models**: Qwen, Qwen2.5
+
+- **Features**:
+  - Demonstrates direct and high-level generation methods
+  - Covers best practices in prompt design
+  - Includes usage examples for each method
+
+- **Deliverables**:
+  - Hands-on Demo Notebook: [`DL_9_Prompt_based_Generation.ipynb`](DL_9_Prompt_based_Generation.ipynb)
+
 
 
 ## Project 14: RAG-based Chatbot with Ollama and FAISS
