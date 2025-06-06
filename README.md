@@ -148,6 +148,9 @@ This repo is home to the code that accompanies Jidapa's *Deep Learining Project*
   - **Video & Image Handling**: `yt_dlp`, `cv2`, `PIL`
   - **Visualization**: `plotly`
   - **Deep Learning & Models**: `pytorch`, `torchvision`, `transformers`, `CLIP`
+  - 
+- **Deliverables**:
+  - Demo Notebook: [`DL_4_Image_search.ipynb`](DL_4_Image_search.ipynb)
 
 ## Project 7: Thai LLM Model Usage with OpenThaiGPT 🇹🇭🧠
 
@@ -244,7 +247,8 @@ This repo is home to the code that accompanies Jidapa's *Deep Learining Project*
 - **Features**:
   - Manages API keys securely via environment variables
   - Preserves past chat history for context-aware AI responses
-- **Repository**: [GitHub - DL-2_GEMINI_project](https://github.com/JPP-J/DL-2_GEMINI_project)
+- **Resources**:
+  - **Repository**: [GitHub - DL-2_GEMINI_project](https://github.com/JPP-J/DL-2_GEMINI_project)
 
 
 ## Project 12: Chat with LLM Projects 💬
@@ -307,6 +311,7 @@ This repo is home to the code that accompanies Jidapa's *Deep Learining Project*
 - **Models**:
   - Ollama: `gemma3:1b`
   - Embeddings: `all-MiniLM-L6-v2`
-- [Repository](https://github.com/JPP-J/DL-3_RAG)
+- **Resources**:
+  - Repository: [GitHub - DL-3_RAG](https://github.com/JPP-J/DL-3_RAG)
 
 
