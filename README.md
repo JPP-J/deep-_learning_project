@@ -134,3 +134,13 @@ This repo is home to the code that accompanies Jidapa's *Deep Learining Project*
   - Deep Learning/AI: `transformers`
   - model: Qwen/Qwen2.5
 - [Hand on Code demo Notebook](DL_9_Prompt_based_Generation.ipynb)
+
+## Project 14: RAG-based Chatbot with Ollama and FAISS
+- **Description**: hands on python code demo to build a Retrieval-Augmented Generation (RAG) chatbot using FAISS for vector search and Ollama for context-aware responses. Includes document upload, persistent chat history, and Gradio-based UI.
+  - Processing: `FAISS`, `pythainlp`
+  - Deep Learning/AI: `langchain`, `HuggingFaceEmbeddings`, `ollama`
+  - UI: `gradio`
+  - DevOps: `Docker`, `Docker Compose`, `GitHub Actions`
+  - Model: `gemma3:1b` (Ollama), `all-MiniLM-L6-v2` (embeddings)
+- [Repository](https://github.com/JPP-J/DL-3_RAG)
+
