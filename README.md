@@ -27,7 +27,7 @@ This repo is home to the code that accompanies Jidapa's *Deep Learining Project*
   - TensorFlow-based model: [`ANN_model.py`](ANN_model.py), [`ANN_usage.py`](ANN_usage.py)
   - PyTorch-based model: [`ANN_model2.py`](ANN_model2.py)
   - Deployment setup: [`Dockerfile`](Dockerfile)
-  - Final report: [ANN and CNN Report (PDF)](https://drive.google.com/file/d/1T1dkZxAcpdSUJ2gxWtfwASa8cqKCNaHt/view?usp=sharing)  
+  - Final report: [`ANN and CNN Report (PDF)`](https://drive.google.com/file/d/1T1dkZxAcpdSUJ2gxWtfwASa8cqKCNaHt/view?usp=sharing)  
     *(Includes process explanation using RapidMiner and Python implementation results)*
 
 
