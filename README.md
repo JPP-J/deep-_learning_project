@@ -19,8 +19,6 @@ This repo is home to the code that accompanies Jidapa's *Deep Learining Project*
        - Cross-validation scores ranged from 45% to 61%.  
        - Final test accuracy improved to ~72%, with test loss around 0.52.
          
-      ![image](https://github.com/user-attachments/assets/ba928957-23b8-4792-af12-7f521edf7041)
-
   2. **Credit Eligibility Prediction (PyTorch):**  
      - Dataset includes categorical and numerical features from bank marketing data (e.g., job, marital, education, balance).  
      - Missing age values handled; categorical and numerical preprocessing applied.  
