@@ -9,47 +9,84 @@ This repo is home to the code that accompanies Jidapa's *Deep Learining Project*
 
 ## Project 1: Artificial Neural Network (ANN) Classification
 
-- **Description**:  
-  Developed two ANN classification models:
-  - **Model 1:** Predicts individual income levels (target: >50k or ≤50k) using TensorFlow and Keras.
-  - **Model 2:** Predicts credit eligibility (target: yes or no) based on bank credit data using PyTorch.
+- **Description:**  
+  Developed two ANN classification models addressing different prediction tasks:
 
-  Both models achieved up to **88% accuracy** on training and validation datasets. Implemented robust data preprocessing, model training, evaluation, and result analysis pipelines.
+  1. **Income Level Prediction (TensorFlow/Keras):**  
+     - Dataset features include normalized numerical values like age, fnlwgt, education_num, capital_gain/loss, hours_per_week, and label (>50K or ≤50K).  
+     - Model architecture: Sequential with 3 Dense layers (6, 8, 1 units) and Dropout layers to reduce overfitting.  
+     - Model size: 107 parameters.  
+     - Performance:  
+       - Cross-validation scores ranged from 45% to 61%.  
+       - Final test accuracy improved to ~72%, with test loss around 0.52.
 
-- **Libraries Used**:
-  - **Data Analysis:** `pandas`, `NumPy`
-  - **Visualization:** `matplotlib`, `seaborn`
-  - **Model Handling:** `pickle`, `joblib`
-  - **Deep Learning:** `tensorflow`, `keras`, `pytorch`
-  - **Model Evaluation:** `cross_val_score`, `Loss`, `Accuracy`
+  2. **Credit Eligibility Prediction (PyTorch):**  
+     - Dataset includes categorical and numerical features from bank marketing data (e.g., job, marital, education, balance).  
+     - Missing age values handled; categorical and numerical preprocessing applied.  
+     - Model architecture: Fully connected network with layers of sizes [11 → 6 → 6 → 1], with dropout for regularization.  
+     - Training utilized mixed precision for efficiency.  
+     - Training/Validation accuracy stabilized at ~88%.  
+     - Final predictions indicate consistent binary outputs.
 
-- **Deliverables**:
-  - TensorFlow-based model: [`ANN_model.py`](ANN_model.py), [`ANN_usage.py`](ANN_usage.py)
-  - PyTorch-based model: [`ANN_model2.py`](ANN_model2.py)
-  - Deployment setup: [`Dockerfile`](Dockerfile)
-  - Final report: [`ANN and CNN Report (PDF)`](https://drive.google.com/file/d/1T1dkZxAcpdSUJ2gxWtfwASa8cqKCNaHt/view?usp=sharing)  
-    *(Includes process explanation using RapidMiner and Python implementation results)*
+- **Libraries and Tools Used:**  
+  - Data manipulation and visualization: `pandas`, `NumPy`, `matplotlib`, `seaborn`  
+  - Model development: `tensorflow`, `keras`, `pytorch`  
+  - Model evaluation and persistence: `cross_val_score`, `pickle`, `joblib`  
+  - Mixed precision training to optimize performance (PyTorch model).
+
+- **Deliverables:**  
+  - TensorFlow ANN model: [`ANN_model.py`](ANN_model.py), [`ANN_usage.py`](ANN_usage.py)  
+  - PyTorch ANN model: [`ANN_model2.py`](ANN_model2.py)  
+  - Deployment configuration: [`Dockerfile`](Dockerfile)  
+  - Detailed final report: [`ANN and CNN Report (PDF)`](https://drive.google.com/file/d/1T1dkZxAcpdSUJ2gxWtfwASa8cqKCNaHt/view?usp=sharing)  
+    *(Report includes step-by-step process from data preprocessing to model evaluation and comparison, integrating RapidMiner and Python)*
+
+- **Summary:**  
+The two ANN models successfully classify their respective datasets with good accuracy, demonstrating effective feature preprocessing, model design, and training strategies. The PyTorch model, in particular, shows robust training stability with ~88% accuracy, while the TensorFlow model improves test accuracy from initial low cross-validation scores to 72%. Both models provide a strong baseline for ANN classification tasks with tabular data.
 
 
 ## Project 2: Convolutional Neural Network (CNN) for Handwritten Digit Recognition
 
-- **Description**:  
-  Built a Convolutional Neural Network (CNN) model using **TensorFlow** and **Keras** to classify handwritten digits (0–9) from the **MNIST dataset**. The model achieved a **prediction accuracy of up to 99%**, demonstrating high performance in image classification tasks.
+- **Description:**  
+  Developed a CNN model using **TensorFlow** and **Keras** to classify handwritten digits (0–9) from the **MNIST dataset**.  
+  The architecture consists of 3 convolutional layers with ReLU activation and max-pooling, followed by a fully connected dense layer and dropout for regularization.  
+  The model achieved near state-of-the-art accuracy with strong generalization on test data.
 
-- **Libraries Used**:
-  - **Data Analysis:** `pandas`, `NumPy`
-  - **Visualization:** `matplotlib`, `seaborn`
-  - **Image Handling:** `PIL`
-  - **Model Handling:** `pickle`, `joblib`
-  - **Deep Learning:** `tensorflow`, `keras`
-  - **Model Evaluation:** `cross_val_score`, `Loss`, `Accuracy`
+- **Model Architecture:**  
+  - Conv2D (32 filters, 3x3 kernel) → MaxPooling2D (2x2)  
+  - Conv2D (64 filters, 3x3 kernel) → MaxPooling2D (2x2)  
+  - Conv2D (64 filters, 3x3 kernel)  
+  - Flatten layer to convert 3D feature maps to 1D vector  
+  - Dense layer (64 units) with dropout (for overfitting prevention)  
+  - Output Dense layer (10 units) with softmax activation for multi-class classification
 
-- **Deliverables**:
-  - Dataset: [`MNIST Training`](data/MNIST%20-%20JPG%20-%20training), [`MNIST Testing`](data/MNIST%20-%20JPG%20-%20training)
-  - CNN Implementation: [`CNN_model.py`](CNN_usage.py)
-  - Deployment Setup: [`Dockerfile`](Dockerfile)
-  - Final Report: [`ANN and CNN Report (PDF)`](https://drive.google.com/file/d/1T1dkZxAcpdSUJ2gxWtfwASa8cqKCNaHt/view?usp=sharing)  
-    *(Includes model performance analysis, data pipeline, and process summary using RapidMiner and Python)*
+- **Model Parameters:**  
+  - Total parameters: 93,322 (~364.5 KB)  
+  - All parameters are trainable.
+
+- **Performance Metrics:**  
+  - Final training accuracy: **99.32%**  
+  - Final validation accuracy: **98.81%**  
+  - Training loss: 0.0223  
+  - Validation loss: 0.0542  
+  - Test set accuracy: **98.97%**
+
+- **Libraries and Tools Used:**  
+  - Data processing and visualization: `pandas`, `NumPy`, `matplotlib`, `seaborn`  
+  - Image processing: `PIL`  
+  - Deep learning: `tensorflow`, `keras`  
+  - Model evaluation and persistence: `pickle`, `joblib`
+
+- **Deliverables:**  
+  - MNIST dataset folders for training and testing: [`MNIST Training`](data/MNIST%20-%20JPG%20-%20training), [`MNIST Testing`](data/MNIST%20-%20JPG%20-%20testing)  
+  - CNN model implementation: [`CNN_model.py`](CNN_model.py), [`CNN_usage.py`](CNN_usage.py)  
+  - Deployment setup: [`Dockerfile`](Dockerfile)  
+  - Comprehensive final report: [`ANN and CNN Report (PDF)`](https://drive.google.com/file/d/1T1dkZxAcpdSUJ2gxWtfwASa8cqKCNaHt/view?usp=sharing)  
+    *(Report includes detailed model design, training pipeline, performance evaluation, and comparison with baseline methods using RapidMiner and Python)*
+
+- **Summary:**
+  The CNN model effectively classifies handwritten digits with excellent accuracy, benefiting from convolutional feature extraction and dropout regularization. The model's high
+  accuracy (>98%) on test data confirms its robustness and suitability for image classification tasks in real-world scenarios.
 
 ## Project 3: Image Classification with Pretrained ResNet-50d 🖼️
 
