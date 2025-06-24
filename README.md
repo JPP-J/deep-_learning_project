@@ -36,7 +36,8 @@ This repo is home to the code that accompanies Jidapa's *Deep Learining Project*
 - **Deliverables:**  
   - TensorFlow ANN model: [`ANN_model.py`](ANN_model.py), [`ANN_usage.py`](ANN_usage.py)  
   - PyTorch ANN model: [`ANN_model2.py`](ANN_model2.py)  
-  - Deployment configuration: [`Dockerfile`](Dockerfile)  
+  - Deployment configuration: [`Dockerfile`](Dockerfile)
+  - Example Result: [`example_results.txt`](example_results.txt)
   - Detailed final report: [`ANN and CNN Report (PDF)`](https://drive.google.com/file/d/1T1dkZxAcpdSUJ2gxWtfwASa8cqKCNaHt/view?usp=sharing)  
     *(Report includes step-by-step process from data preprocessing to model evaluation and comparison, integrating RapidMiner and Python)*
 
@@ -79,7 +80,8 @@ The two ANN models successfully classify their respective datasets with good acc
 - **Deliverables:**  
   - MNIST dataset folders for training and testing: [`MNIST Training`](data/MNIST%20-%20JPG%20-%20training), [`MNIST Testing`](data/MNIST%20-%20JPG%20-%20testing)  
   - CNN model implementation: [`CNN_model.py`](CNN_model.py), [`CNN_usage.py`](CNN_usage.py)  
-  - Deployment setup: [`Dockerfile`](Dockerfile)  
+  - Deployment setup: [`Dockerfile`](Dockerfile)
+  - Example Result: [`example_results.txt`](example_results.txt)
   - Comprehensive final report: [`ANN and CNN Report (PDF)`](https://drive.google.com/file/d/1T1dkZxAcpdSUJ2gxWtfwASa8cqKCNaHt/view?usp=sharing)  
     *(Report includes detailed model design, training pipeline, performance evaluation, and comparison with baseline methods using RapidMiner and Python)*
 
