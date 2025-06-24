@@ -8,6 +8,8 @@ import matplotlib.pyplot as plt
 from torch.cuda.amp import GradScaler, autocast
 import os
 import joblib
+from sklearn.metrics import accuracy_score
+from sklearn.base import BaseEstimator, ClassifierMixin
 
 # PyTorch
 torch.manual_seed(42)
@@ -17,18 +19,18 @@ if torch.cuda.is_available():
 
 # Define a simple model using Embeddings for Collaborative Filtering
 class TorchModel(nn.Module):
-    def __init__(self, input_dim):
+    def __init__(self, input_dim, hidden_dim=32, output_dim=1):
         super(TorchModel, self).__init__()
 
         # Input Layer
-        self.fc1 = nn.Linear(input_dim, out_features=6)  # Input layer (equivalent to Dense(6, input_dim=input_dim))
+        self.fc1 = nn.Linear(input_dim, out_features=hidden_dim)  # Input layer (equivalent to Dense(6, input_dim=input_dim))
 
         # Hidden Layer
-        self.fc2 = nn.Linear(6, 6)  # First hidden layer
+        self.fc2 = nn.Linear(hidden_dim, hidden_dim)  # First hidden layer
         self.dropout = nn.Dropout(0.3)  # Dropout after hidden layer
 
         # Output Layer
-        self.fc3 = nn.Linear(6, 1)  # Output layer (equivalent to Dense(1))
+        self.fc3 = nn.Linear(hidden_dim, output_dim)  # Output layer (equivalent to Dense(1))
 
     def forward(self, X):
         x = X.to(self.fc1.weight.device)
@@ -40,36 +42,66 @@ class TorchModel(nn.Module):
         # x = torch.sigmoid(self.fc3(x))  # Output layer + Sigmoid activation
         return x
 
-class TorchClassifierWrapper():
-    def __init__(self, input_dim, epochs=50, lr=0.001, criteria='cross-ent', batch_size=16, val_size=0.2, patience=3):
-        self.input_dim = input_dim
+class TorchClassifierWrapper(BaseEstimator, ClassifierMixin):
+    def __init__(self, hidden_dim, output_dim, epochs=50, lr=0.001, criteria='cross-ent', batch_size=16, val_size=0.2, patience=3):
+        # self.input_dim = input_dim
+        self.hidden_dim = hidden_dim
+        self.output_dim = output_dim
         self.epochs = epochs
         self.lr = lr
-        self.model = TorchModel(input_dim)
         self.batch_size = batch_size
         self.val_size = val_size
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         self.patience = patience
+        self.criteria = criteria
+        self.model = None  # initialize as None
+        self.optimizer = None
+        self.criterion = None
 
-        # Criteria choices
-        if criteria == 'cross-ent':
-            self.criterion = nn.CrossEntropyLoss()  # Multiple
-        elif criteria == 'MSE':
-            self.criterion = nn.MSELoss()
-        elif criteria == 'binary':
-            self.criterion = nn.BCEWithLogitsLoss()   # Binary Cross-Entropy Loss for binary classification
-        else:
-            print('Invalid criteria')
+        # # Criteria choices
+        # if self.criteria == 'cross-ent':
+        #     self.criterion = nn.CrossEntropyLoss()
+        # elif self.criteria == 'MSE':
+        #     self.criterion = nn.MSELoss()
+        # elif self.criteria == 'binary-logit':
+        #     self.criterion = nn.BCEWithLogitsLoss()
+        # elif self.criteria == 'binary':
+        #     self.criterion = nn.BCELoss()
+        # else:
+        #     raise ValueError(f"Invalid criteria: {self.criteria}")
 
-        # optimizer
-        self.optimizer = optim.Adam(self.model.parameters(), lr=self.lr)
+        # # optimizer
+        # self.optimizer = optim.Adam(self.model.parameters(), lr=self.lr)
 
-        self.scaler = GradScaler()  # For mixed precision training
+        # self.scaler = torch.amp.GradScaler()  # For mixed precision training
 
         self.history = None
 
     def fit(self, X, y):
-        self.model.to(self.device)  # Move the model to GPU/CPU
+        if hasattr(X, "toarray"):
+            X = X.toarray()
+
+        input_dim = X.shape[1]  # Dynamically get input dimension for this fold
+        self.input_dim = input_dim
+        self.model = TorchModel(input_dim, hidden_dim=self.hidden_dim, output_dim=self.output_dim).to(self.device)
+
+        
+        # Criteria choices
+        if self.criteria == 'cross-ent':
+            self.criterion = nn.CrossEntropyLoss()
+        elif self.criteria == 'MSE':
+            self.criterion = nn.MSELoss()
+        elif self.criteria == 'binary-logit':
+            self.criterion = nn.BCEWithLogitsLoss()
+        elif self.criteria == 'binary':
+            self.criterion = nn.BCELoss()
+        else:
+            raise ValueError(f"Invalid criteria: {self.criteria}")
+
+        # optimizer
+        self.optimizer = optim.Adam(self.model.parameters(), lr=self.lr)
+
+        self.scaler = torch.amp.GradScaler()  # For mixed precision training
 
         torch.cuda.empty_cache()  # Clear GPU cache
 
@@ -78,8 +110,8 @@ class TorchClassifierWrapper():
 
         # Convert to PyTorch tensors
         X_tensor = torch.tensor(X, dtype=torch.float32).to(self.device)                      # Features
-        y_tensor = torch.tensor(y, dtype=torch.float32).unsqueeze(1).to(self.device)         # Target
-        y_tensor = y_tensor.squeeze()  # Fix: Remove extra dimension (Shape: [16])
+        y_tensor = torch.tensor(y.reshape(-1, 1), dtype=torch.float32).to(self.device)         # Target
+        # y_tensor = y_tensor.squeeze()  # Fix: Remove extra dimension (Shape: [16])
 
         # Create dataset and split into train/validation sets
         # Use DataLoader for batch training
@@ -112,9 +144,10 @@ class TorchClassifierWrapper():
 
                 self.optimizer.zero_grad()
 
-                with autocast():  # Mixed precision
+                with torch.amp.autocast(device_type='cuda'):  # Mixed precision
                     outputs = self.model(batch_x)
-                    loss = self.criterion(outputs.squeeze(), batch_y)
+                    # loss = self.criterion(outputs.squeeze(), batch_y)
+                    loss = self.criterion(outputs.view(-1), batch_y.view(-1).float())  # Fix: Ensure correct shape for BCEWithLogitsLoss
 
                 self.scaler.scale(loss).backward()
                 self.scaler.step(self.optimizer)
@@ -141,7 +174,8 @@ class TorchClassifierWrapper():
                     batch_x, batch_y = batch_x.to(self.device), batch_y.to(self.device)
 
                     outputs = self.model(batch_x)
-                    loss = self.criterion(outputs.squeeze(), batch_y)
+                    # loss = self.criterion(outputs.squeeze(), batch_y)
+                    loss = self.criterion(outputs.view(-1), batch_y.view(-1).float())
 
                     val_loss += loss.item()
                     preds = (outputs.squeeze() > 0.5).float()  # Convert to binary predictions
@@ -173,7 +207,10 @@ class TorchClassifierWrapper():
             self.model.load_state_dict(best_model_state)
 
         print(f'Finished training data....')
-
+    
+    def score(self, X, y):
+        y_pred = self.predict(X)
+        return accuracy_score(y, y_pred)
 
     def save_model(self, model_name:str=None):
         # Check if the folder already exists
@@ -188,6 +225,9 @@ class TorchClassifierWrapper():
         print("Model and training history saved!")
 
     def predict(self, X):
+        if hasattr(X, "toarray"):
+            X = X.toarray()
+
         self.model.eval()
         X_tensor = torch.tensor(X, dtype=torch.float32).to(self.device)
         with torch.no_grad():
@@ -195,6 +235,9 @@ class TorchClassifierWrapper():
             return (outputs.cpu().numpy() > 0.5).astype(int)  # Convert to 0 or 1
 
     def predict_proba(self, X):
+        if hasattr(X, "toarray"):
+            X = X.toarray()
+
         """Returns probability scores for classification"""
         self.model.eval()
         X_tensor = torch.tensor(X, dtype=torch.float32).to(self.device)

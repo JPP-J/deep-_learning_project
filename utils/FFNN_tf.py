@@ -18,6 +18,7 @@ class KerasClassifierWrapper(BaseEstimator, ClassifierMixin):
         self.model = self.build_model()
         self.history = None  # Initialize history attribute
         self.epochs = epochs
+        self.classes_ = None  # Initialize classes_ attribute
 
 
     def build_model(self):
@@ -43,6 +44,7 @@ class KerasClassifierWrapper(BaseEstimator, ClassifierMixin):
         return model
 
     def fit(self, X, y):
+        self.classes_ = np.unique(y)  # Store the unique classes
         early_stopping = EarlyStopping(
             monitor='val_loss',
             patience=10,                # Number of epochs to wait for improvement
