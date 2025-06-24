@@ -34,8 +34,8 @@ This repo is home to the code that accompanies Jidapa's *Deep Learining Project*
   - Mixed precision training to optimize performance (PyTorch model).
 
 - **Deliverables:**  
-  - TensorFlow ANN model: [`ANN_model.py`](ANN_model.py), [`ANN_usage.py`](ANN_usage.py)  
-  - PyTorch ANN model: [`ANN_model2.py`](ANN_model2.py)  
+  - TensorFlow ANN model: [`ANN_model.py`](ANN_model_tf.py), [`ANN_usage.py`](ANN_usage_tf.py)  
+  - PyTorch ANN model: [`ANN_model2.py`](ANN_model_pt.py)  
   - Deployment configuration: [`Dockerfile`](Dockerfile)
   - Example Result: [`example_results.txt`](example_results.txt)
   - Detailed final report: [`ANN and CNN Report (PDF)`](https://drive.google.com/file/d/1T1dkZxAcpdSUJ2gxWtfwASa8cqKCNaHt/view?usp=sharing)  
