@@ -5,7 +5,7 @@ from sklearn.preprocessing import LabelEncoder, StandardScaler
 import tensorflow as tf
 import joblib
 import pickle
-from utils.FFNN import load_model, load_history, plot_saved_history
+from utils.FFNN_tf import load_model, load_history, plot_saved_history
 
 def processes_data_test_acc_loss(path, path_scaler, path_label_encoder, sep=','):
     #

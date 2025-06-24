@@ -9,7 +9,7 @@ import tensorflow as tf
 import matplotlib.pyplot as plt
 import pickle
 import joblib
-from utils.FFNN import KerasClassifierWrapper
+from utils.FFNN_tf import KerasClassifierWrapper
 
 # Set specific seed number
 np.random.seed(42)

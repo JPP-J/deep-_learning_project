@@ -4,8 +4,8 @@ from sklearn import datasets
 from sklearn.model_selection import train_test_split
 from sklearn.pipeline import Pipeline
 from sklearn.compose import ColumnTransformer
-from sklearn.preprocessing import LabelEncoder, StandardScaler, OrdinalEncoder
-from sklearn.model_selection import cross_val_score
+from sklearn.preprocessing import LabelEncoder, StandardScaler, OrdinalEncoder, OneHotEncoder
+from sklearn.model_selection import cross_val_score, StratifiedKFold
 import matplotlib.pyplot as plt
 import pickle
 import joblib
@@ -58,7 +58,8 @@ def pre_processing(df):
     y = label_encoder.fit_transform(y)  # Converts to 0, 1, 2, ...
 
     preprocessor = ColumnTransformer([
-        ('cat', OrdinalEncoder(), categorical_features),  # Label Encoding
+        # 'cat', OrdinalEncoder(handle_unknown='use_encoded_value', unknown_value=-1), categorical_features),
+        ('cat', OneHotEncoder(handle_unknown='ignore', sparse_output=False), categorical_features),  # Label Encoding
         ('num', StandardScaler(), numerical_features)     # Standardization
     ], remainder='passthrough')
 
@@ -67,10 +68,11 @@ def pre_processing(df):
 # -----------------------------------------------------------------------------------------------------
 # Part3: Create the Pipeline model
 def train(X, y, preprocessor):
+
     pipeline = Pipeline([
         ('preprocess', preprocessor),
-        ('model', TorchClassifierWrapper(input_dim=X.shape[1],
-                                         epochs=10, lr=0.001, criteria='binary',
+        ('model', TorchClassifierWrapper(hidden_dim=32, output_dim=1,  # number feature input
+                                         epochs=10, lr=0.001, criteria='binary-logit',
                                          batch_size=32, val_size=0.2))       # number feature input
     ])
 
@@ -90,7 +92,21 @@ def train(X, y, preprocessor):
     # plot performances
     print("\nModel plot..........")
     pipeline.named_steps['model'].plot_performance()
+
     return pipeline
+# -----------------------------------------------------------------------------------------------------
+def evaluate_model(pipeline, X_test, y_test, X_train, y_train):
+    print("\nModel evaluation..........")
+
+    # Cross-validation scores while training
+    scores = cross_val_score(pipeline, X_train, y_train, cv=5, scoring='accuracy')
+    print("Cross-validation scores:", scores)
+    print("Average CV accuracy:", scores.mean())
+
+    # Evaluate the Model with test set
+    accuracy = pipeline.score(X_test, y_test)
+    print(f"Test accuracy: {accuracy:.2f}")
+
 
 # -----------------------------------------------------------------------------------------------------
 # Part4: Saved relevant files
@@ -126,8 +142,13 @@ def use_model(X):
 
 
 if __name__ == "__main__" :
-    df = load_data()                                            # Load data
-    X, y, preprocessor, label_encoder = pre_processing(df)      # pre-processing
-    # pipeline = train(X, y, preprocessor)                      # training
-    # save_model(pipeline, label_encoder)                       # save model
-    use_model(X)                                                # usage saved model
+    df = load_data()                                              # Load data
+    X, y, preprocessor, label_encoder = pre_processing(df)        # pre-processing
+    print(f"X shape: {X.shape}, y shape: {y.shape}")               # Check shapes
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)  # Split data
+    pipeline = train(X_train, y_train, preprocessor)              # training
+    evaluate_model(pipeline, X_test, y_test, X_train, y_train)                      # evaluate model
+
+
+    # save_model(pipeline, label_encoder)                         # save model
+    # use_model(X)                                                # usage saved model

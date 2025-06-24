@@ -43,17 +43,13 @@ Layer: dense_1, Type: Dense
 Layer: dropout_1, Type: Dropout
 Layer: dense_2, Type: Dense
 
-Test Loss: 0.5189
-Test Accuracy: 0.7233
-
 > ANN_model2.py
-example dataset:
-    id   age          job  marital  ... pdays previous  poutcome   y
-0   1  30.0   unemployed  married  ...    -1        0   unknown  no
-1   2  33.0     services  married  ...   339        4   failure  no
-2   3  35.0   management   single  ...   330        1   failure  no
-3   4  30.0   management  married  ...    -1        0   unknown  no
-4   5  59.0  blue-collar  married  ...    -1        0   unknown  no
+    id   age          job  marital  education default  balance housing loan   contact  day month  duration  campaign  pdays  previous poutcome   y
+0   1  30.0   unemployed  married    primary      no     1787      no   no  cellular   19   oct        79         1     -1         0  unknown  no 
+1   2  33.0     services  married  secondary      no     4789     yes  yes  cellular   11   may       220         1    339         4  failure  no 
+2   3  35.0   management   single   tertiary      no     1350     yes   no  cellular   16   apr       185         1    330         1  failure  no 
+3   4  30.0   management  married   tertiary      no     1476     yes  yes   unknown    3   jun       199         4     -1         0  unknown  no 
+4   5  59.0  blue-collar  married  secondary      no        0     yes   no   unknown    5   may       226         1     -1         0  unknown  no 
 
 [5 rows x 18 columns]
 
@@ -107,12 +103,33 @@ Epoch 9/10, Train Loss: 0.6949, Train Acc: 0.8871, Val Loss: 0.6932, Val Acc: 0.
 Epoch 10/10, Train Loss: 0.6941, Train Acc: 0.8871, Val Loss: 0.6932, Val Acc: 0.8803
 Finished training data....
 
+Cross-validation scores: [0.88626907 0.89181692 0.87656033 0.88210818 0.88488211]
+Test accuracy: 0.89
+
 Model training complete..........
 Model and training history saved!
 
-Feature names after preprocessing: ['cat__job' 'cat__marital' 'cat__education' 'cat__housing' 'cat__loan'
- 'cat__poutcome' 'cat__campaign' 'num__age' 'num__balance' 'num__pdays'
- 'num__previous']
+Feature names after preprocessing: 
+['cat__job_admin.' 'cat__job_blue-collar' 'cat__job_entrepreneur'
+ 'cat__job_housemaid' 'cat__job_management' 'cat__job_retired'
+ 'cat__job_self-employed' 'cat__job_services' 'cat__job_student'
+ 'cat__job_technician' 'cat__job_unemployed' 'cat__job_unknown'
+ 'cat__marital_divorced' 'cat__marital_married' 'cat__marital_single'
+ 'cat__education_primary' 'cat__education_secondary'
+ 'cat__education_tertiary' 'cat__education_unknown' 'cat__housing_no'
+ 'cat__housing_yes' 'cat__loan_no' 'cat__loan_yes' 'cat__poutcome_failure'
+ 'cat__poutcome_other' 'cat__poutcome_success' 'cat__poutcome_unknown'
+ 'cat__campaign_1' 'cat__campaign_2' 'cat__campaign_3' 'cat__campaign_4'
+ 'cat__campaign_5' 'cat__campaign_6' 'cat__campaign_7' 'cat__campaign_8'
+ 'cat__campaign_9' 'cat__campaign_10' 'cat__campaign_11'
+ 'cat__campaign_12' 'cat__campaign_13' 'cat__campaign_14'
+ 'cat__campaign_15' 'cat__campaign_16' 'cat__campaign_17'
+ 'cat__campaign_18' 'cat__campaign_19' 'cat__campaign_20'
+ 'cat__campaign_21' 'cat__campaign_22' 'cat__campaign_23'
+ 'cat__campaign_24' 'cat__campaign_25' 'cat__campaign_28'
+ 'cat__campaign_29' 'cat__campaign_30' 'cat__campaign_31'
+ 'cat__campaign_32' 'cat__campaign_44' 'cat__campaign_50' 'num__age'
+ 'num__balance' 'num__pdays' 'num__previous']
 
  Model get prediction..........
 [[0]
@@ -121,7 +138,7 @@ Feature names after preprocessing: ['cat__job' 'cat__marital' 'cat__education' '
  [0]
  [0]]
 
- >> use_model.py
+ >> ANN_usage.py
 Model Architecture:
 TorchModel(
   (fc1): Linear(in_features=11, out_features=6, bias=True)
