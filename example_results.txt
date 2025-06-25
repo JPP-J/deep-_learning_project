@@ -1,4 +1,4 @@
->ANN_model.py:
+>ANN_model_tf.py:
 
 example dataset:
          age    fnlwgt  education_num  capital_gain  capital_loss  hours_per_week label
@@ -11,6 +11,7 @@ example dataset:
 columns name: ['age' 'fnlwgt' 'education_num' 'capital_gain' 'capital_loss'
  'hours_per_week' 'label']
 labels size: (array(['<=50K', '>50K'], dtype=object), array([501, 499]))
+dataset shape: (1000, 7)
 
 
 Test accuracy: 0.50
@@ -42,7 +43,7 @@ Layer: dense_1, Type: Dense
 Layer: dropout_1, Type: Dropout
 Layer: dense_2, Type: Dense
 
-> ANN_model2.py
+> ANN_model_pt.py
     id   age          job  marital  education default  balance housing loan   contact  day month  duration  campaign  pdays  previous poutcome   y
 0   1  30.0   unemployed  married    primary      no     1787      no   no  cellular   19   oct        79         1     -1         0  unknown  no 
 1   2  33.0     services  married  secondary      no     4789     yes  yes  cellular   11   may       220         1    339         4  failure  no 
@@ -141,7 +142,7 @@ Feature names after preprocessing:
  [0]
  [0]]
 
- >> ANN_usage.py
+ >> ANN_usage_pt.py
 Model Architecture:
 TorchModel(
   (fc1): Linear(in_features=11, out_features=6, bias=True)

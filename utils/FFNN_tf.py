@@ -8,6 +8,7 @@ from tensorflow.keras import layers, models
 import joblib
 from tensorflow.keras.utils import plot_model
 import matplotlib.pyplot as plt
+from sklearn.metrics import accuracy_score, classification_report
 
 
 # Feedforward neural network FFNN (input → hidden layers → output)
@@ -63,6 +64,11 @@ class KerasClassifierWrapper(BaseEstimator, ClassifierMixin):
     def predict(self, X):
         predictions = self.model.predict(X)
         return np.argmax(predictions, axis=1)
+    
+    def score(self, X, y):
+        y_pred = self.model.predict(X)
+        y_pred_classes = np.argmax(y_pred, axis=1) if y_pred.ndim > 1 else (y_pred > 0.5).astype(int)
+        return accuracy_score(y, y_pred_classes)
 
     def get_summary(self):
         self.model.summary()
@@ -83,6 +89,7 @@ class KerasClassifierWrapper(BaseEstimator, ClassifierMixin):
         plt.title('Model Loss')
         plt.xlabel('Epoch')
         plt.ylabel('Loss')
+        plt.xticks(range(len(self.history.history['loss'])))
         plt.legend()
 
         plt.subplot(1, 2, 2)
@@ -91,6 +98,7 @@ class KerasClassifierWrapper(BaseEstimator, ClassifierMixin):
         plt.title('Model Accuracy')
         plt.xlabel('Epoch')
         plt.ylabel('Accuracy')
+        plt.xticks(range(len(self.history.history['accuracy'])))
         plt.legend()
 
         plt.tight_layout()
