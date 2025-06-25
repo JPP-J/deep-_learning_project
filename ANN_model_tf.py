@@ -96,3 +96,4 @@ sample_data_scaled = scaler.transform(sample_data)
 predictions = pipeline.predict(sample_data_scaled)
 predicted_labels = label_encoder.inverse_transform(predictions)
 print(f"Predicted labels for sample data: {predicted_labels}")
+

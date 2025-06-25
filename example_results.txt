@@ -1,13 +1,12 @@
 >ANN_model.py:
 
 example dataset:
-         age    fnlwgt  education_num  ...  capital_loss  hours_per_week  label
-0  0.697613  0.023850      -0.202130  ...     -0.267624        0.693308   >50K
-1  1.246420  1.366554      -0.573692  ...      3.546163        0.693308   >50K
-2 -0.007997  0.172157       0.540995  ...      3.728060        1.537879   >50K
-3 -1.262414  0.842875      -0.202130  ...     -0.267624        0.524394   >50K
-4 -0.478403 -0.431269       1.284119  ...     -0.267624       -0.573548   >50K
-
+         age    fnlwgt  education_num  capital_gain  capital_loss  hours_per_week label
+0  0.697613  0.023850      -0.202130     -0.200086     -0.267624        0.693308  >50K
+1  1.246420  1.366554      -0.573692     -0.200086      3.546163        0.693308  >50K
+2 -0.007997  0.172157       0.540995     -0.200086      3.728060        1.537879  >50K
+3 -1.262414  0.842875      -0.202130      0.423228     -0.267624        0.524394  >50K
+4 -0.478403 -0.431269       1.284119      0.423228     -0.267624       -0.573548  >50K
 [5 rows x 7 columns]
 columns name: ['age' 'fnlwgt' 'education_num' 'capital_gain' 'capital_loss'
  'hours_per_week' 'label']
@@ -81,12 +80,14 @@ poutcome      0
 y             0
 
 dtype: int64
-columns:  Index(['age', 'job', 'marital', 'education', 'balance', 'housing', 'loan',
+columns usage:  Index(['age', 'job', 'marital', 'education', 'balance', 'housing', 'loan',
        'campaign', 'pdays', 'previous', 'poutcome', 'y'],
       dtype='object')
+category feature:  ['job' 'marital' 'housing' 'loan' 'poutcome' 'campaign']
+ordinal features:  ['education']
+numerical feature:  ['age' 'balance' 'pdays' 'previous']
+Final X shape: (4507, 11), y shape: (4507,)
 
-cat:  ['job' 'marital' 'education' 'housing' 'loan' 'poutcome' 'campaign']
-num:  ['age' 'balance' 'pdays' 'previous']
   self.scaler = GradScaler()  # For mixed precision training
 Initial load data....
 Start training data....
@@ -103,8 +104,10 @@ Epoch 9/10, Train Loss: 0.6949, Train Acc: 0.8871, Val Loss: 0.6932, Val Acc: 0.
 Epoch 10/10, Train Loss: 0.6941, Train Acc: 0.8871, Val Loss: 0.6932, Val Acc: 0.8803
 Finished training data....
 
-Cross-validation scores: [0.88626907 0.89181692 0.87656033 0.88210818 0.88488211]
-Test accuracy: 0.89
+Cross-validation scores: [0.81276006 0.84604716 0.84604716 0.87517337 0.82801664]
+Average CV accuracy: 0.8416088765603329
+
+Test accuracy: 0.88
 
 Model training complete..........
 Model and training history saved!

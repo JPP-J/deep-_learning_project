@@ -8,7 +8,8 @@ import matplotlib.pyplot as plt
 from torch.cuda.amp import GradScaler, autocast
 import os
 import joblib
-from sklearn.metrics import accuracy_score
+from collections import Counter
+from sklearn.metrics import accuracy_score, precision_recall_curve, precision_score, recall_score, f1_score, classification_report
 from sklearn.base import BaseEstimator, ClassifierMixin
 
 # PyTorch
@@ -38,12 +39,13 @@ class TorchModel(nn.Module):
         x = torch.relu(self.fc2(x))     # First hidden layer + ReLU
         x = self.dropout(x)             # Apply Dropout
         x = self.fc3(x)                 # final output
-        x = torch.sigmoid(x)            # Sigmoid activation for binary output
+        # x = torch.sigmoid(x)            # Sigmoid activation for binary output
         # x = torch.sigmoid(self.fc3(x))  # Output layer + Sigmoid activation
         return x
 
 class TorchClassifierWrapper(BaseEstimator, ClassifierMixin):
-    def __init__(self, hidden_dim, output_dim, epochs=50, lr=0.001, criteria='cross-ent', batch_size=16, val_size=0.2, patience=3):
+    def __init__(self, hidden_dim, output_dim, epochs=50, lr=0.001, criteria='cross-ent', 
+                 batch_size=16, val_size=0.2, patience=3):
         # self.input_dim = input_dim
         self.hidden_dim = hidden_dim
         self.output_dim = output_dim
@@ -54,53 +56,56 @@ class TorchClassifierWrapper(BaseEstimator, ClassifierMixin):
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         self.patience = patience
         self.criteria = criteria
+        self.pos_weight = None  # Optional: for handling class imbalance
         self.model = None  # initialize as None
         self.optimizer = None
         self.criterion = None
-
-        # # Criteria choices
-        # if self.criteria == 'cross-ent':
-        #     self.criterion = nn.CrossEntropyLoss()
-        # elif self.criteria == 'MSE':
-        #     self.criterion = nn.MSELoss()
-        # elif self.criteria == 'binary-logit':
-        #     self.criterion = nn.BCEWithLogitsLoss()
-        # elif self.criteria == 'binary':
-        #     self.criterion = nn.BCELoss()
-        # else:
-        #     raise ValueError(f"Invalid criteria: {self.criteria}")
-
-        # # optimizer
-        # self.optimizer = optim.Adam(self.model.parameters(), lr=self.lr)
-
-        # self.scaler = torch.amp.GradScaler()  # For mixed precision training
-
         self.history = None
 
-    def fit(self, X, y):
-        if hasattr(X, "toarray"):
-            X = X.toarray()
-
-        input_dim = X.shape[1]  # Dynamically get input dimension for this fold
-        self.input_dim = input_dim
-        self.model = TorchModel(input_dim, hidden_dim=self.hidden_dim, output_dim=self.output_dim).to(self.device)
-
-        
+    @ staticmethod
+    def _get_pos_weight(y):
+        counter = Counter(y)
+        print("Counter:", counter)
+        print(counter[0], counter[1])
+        num_neg = counter[0]
+        num_pos = counter[1]
+        pos_weight = torch.tensor([num_neg / num_pos], dtype=torch.float32)
+        print("Positive weight:", pos_weight)
+        return torch.tensor(pos_weight, dtype=torch.float32) 
+    
+    def _get_criterion(self):
         # Criteria choices
         if self.criteria == 'cross-ent':
             self.criterion = nn.CrossEntropyLoss()
         elif self.criteria == 'MSE':
             self.criterion = nn.MSELoss()
         elif self.criteria == 'binary-logit':
-            self.criterion = nn.BCEWithLogitsLoss()
+            self.criterion = nn.BCEWithLogitsLoss(pos_weight=self.pos_weight)
         elif self.criteria == 'binary':
             self.criterion = nn.BCELoss()
         else:
             raise ValueError(f"Invalid criteria: {self.criteria}")
+        
+        return self.criterion
+        # weight_tensor = torch.tensor([self.pos_weight], dtype=torch.float).to(self.device)  
+        # self.criterion = nn.BCEWithLogitsLoss(pos_weight=weight_tensor)
 
-        # optimizer
+    def fit(self, X, y):
+        print("Unique labels in full y:", np.unique(y))
+        if hasattr(X, "toarray"):
+            X = X.toarray()
+
+        input_dim = X.shape[1]  # Dynamically get input dimension for this fold
+        self.input_dim = input_dim
+        self.model = TorchModel(input_dim, hidden_dim=self.hidden_dim, output_dim=self.output_dim).to(self.device)
+        
+
         self.optimizer = optim.Adam(self.model.parameters(), lr=self.lr)
+        self.pos_weight = self._get_pos_weight(y).to(self.device)  # Calculate positive weight for handling class imbalance
+        # self.pos_weight = torch.tensor([3.0], dtype=torch.float32).to(self.device)  # Example fixed weight, can be calculated dynamically
+        # self.criterion = nn.BCEWithLogitsLoss()  # Temporarily ignore pos_weight
 
+        self.criterion = self._get_criterion()  # Get the criterion based on the specified criteria
         self.scaler = torch.amp.GradScaler()  # For mixed precision training
 
         torch.cuda.empty_cache()  # Clear GPU cache
@@ -133,6 +138,27 @@ class TorchClassifierWrapper(BaseEstimator, ClassifierMixin):
 
         epochs = self.epochs
 
+        print(f"Training for {epochs} epochs with batch size {self.batch_size}...")
+        val_labels = []
+        for _, batch_y in val_dataloader:
+            val_labels.extend(batch_y.view(-1).tolist())
+        print("Val label distribution:", Counter(val_labels))
+        
+        # batch_x, batch_y = next(iter(train_dataloader))
+
+        # for i in range(100):
+        #     self.optimizer.zero_grad()
+        #     outputs = self.model(batch_x)
+        #     loss = self.criterion(outputs.view(-1), batch_y.view(-1).float())
+        #     loss.backward()
+        #     self.optimizer.step()
+
+        #     probs = torch.sigmoid(outputs.view(-1))
+        #     preds = (probs > 0.5).float()
+        #     acc = (preds == batch_y.view(-1)).float().mean().item()
+        #     print(f"Epoch {i+1} | Loss: {loss.item():.4f} | Acc: {acc:.4f}")
+
+
         for epoch in range(epochs):
             self.model.train()
             train_loss = 0
@@ -144,9 +170,8 @@ class TorchClassifierWrapper(BaseEstimator, ClassifierMixin):
 
                 self.optimizer.zero_grad()
 
-                with torch.amp.autocast(device_type='cuda'):  # Mixed precision
+                with torch.amp.autocast(device_type=self.device.type):  # Mixed precision
                     outputs = self.model(batch_x)
-                    # loss = self.criterion(outputs.squeeze(), batch_y)
                     loss = self.criterion(outputs.view(-1), batch_y.view(-1).float())  # Fix: Ensure correct shape for BCEWithLogitsLoss
 
                 self.scaler.scale(loss).backward()
@@ -154,12 +179,26 @@ class TorchClassifierWrapper(BaseEstimator, ClassifierMixin):
                 self.scaler.update()
 
                 train_loss += loss.item()
-                preds = (outputs.squeeze() > 0.5).float()  # Convert to binary predictions
+                # preds = (outputs.squeeze() > 0.5).float()  # Convert to binary predictions
+                preds = (torch.sigmoid(outputs.view(-1)) > 0.5).float()
+                batch_y = batch_y.view(-1).float()
                 correct_train += (preds == batch_y).sum().item()
                 total_train += batch_y.size(0)
 
+                # print("Logits:", outputs.view(-1)[:5].detach().cpu().numpy())
+                # print("Probs :", torch.sigmoid(outputs.view(-1))[:5].detach().cpu().numpy())
+                # print("Preds :", preds[:5].detach().cpu().numpy())
+                # print("Label :", batch_y[:5].cpu().numpy())
+
+                # print("BATCH LABEL:", batch_y.view(-1)[:5])
+                # print("BATCH LABEL dtype:", batch_y.dtype)
+                # print("MODEL OUTPUT shape:", outputs.shape)
+                # print("Model raw output logits:", outputs[:5])
+                # print("Model raw output min/max:", outputs.min(), outputs.max())
+
+
             avg_train_loss = train_loss / len(train_dataloader)
-            train_acc = correct_train / total_train
+            train_acc =  correct_train / total_train
             self.history["train_loss"].append(avg_train_loss)
             self.history["train_acc"].append(train_acc)
 
@@ -174,16 +213,28 @@ class TorchClassifierWrapper(BaseEstimator, ClassifierMixin):
                     batch_x, batch_y = batch_x.to(self.device), batch_y.to(self.device)
 
                     outputs = self.model(batch_x)
-                    # loss = self.criterion(outputs.squeeze(), batch_y)
                     loss = self.criterion(outputs.view(-1), batch_y.view(-1).float())
 
                     val_loss += loss.item()
-                    preds = (outputs.squeeze() > 0.5).float()  # Convert to binary predictions
+                    # preds = (outputs.squeeze() > 0.5).float()  # Convert to binary predictions
+                    preds = (torch.sigmoid(outputs.view(-1)) > 0.5).float()
+                    # preds = (outputs.view(-1) > 0).float()
+                    batch_y = batch_y.view(-1).float()
                     correct_val += (preds == batch_y).sum().item()
                     total_val += batch_y.size(0)
 
+                    # Inside validation loop
+                    if total_val == 0:  # only once
+                        print("VAL PRED:", preds[:10].cpu().numpy())
+                        print("VAL TRUE:", batch_y[:10].cpu().numpy())
+
+                    # print("Logits:", outputs.view(-1)[:5].detach().cpu().numpy())
+                    # print("Probs :", torch.sigmoid(outputs.view(-1))[:5].detach().cpu().numpy())
+                    # print("Preds :", preds[:5].detach().cpu().numpy())
+                    # print("Label :", batch_y[:5].cpu().numpy())
+
             avg_val_loss = val_loss / len(val_dataloader)
-            val_acc = correct_val / total_val
+            val_acc =  correct_val / total_val
             self.history["val_loss"].append(avg_val_loss)
             self.history["val_acc"].append(val_acc)
 
@@ -209,8 +260,17 @@ class TorchClassifierWrapper(BaseEstimator, ClassifierMixin):
         print(f'Finished training data....')
     
     def score(self, X, y):
+        
         y_pred = self.predict(X)
-        return accuracy_score(y, y_pred)
+        print(np.unique(y_pred, return_counts=True))
+
+        acc = accuracy_score(y, y_pred)
+        precision = precision_score(y, y_pred , zero_division=1)
+        recall = recall_score(y, y_pred)
+        f1 = f1_score(y, y_pred)
+        report = classification_report(y, y_pred)
+
+        return report, acc, precision, recall, f1
 
     def save_model(self, model_name:str=None):
         # Check if the folder already exists
@@ -231,9 +291,12 @@ class TorchClassifierWrapper(BaseEstimator, ClassifierMixin):
         self.model.eval()
         X_tensor = torch.tensor(X, dtype=torch.float32).to(self.device)
         with torch.no_grad():
-            outputs = self.model(X_tensor)
-            return (outputs.cpu().numpy() > 0.5).astype(int)  # Convert to 0 or 1
-
+            logits = self.model(X_tensor)
+            probs = torch.sigmoid(logits.view(-1))  # Apply sigmoid to get probabilities
+            preds = (probs > 0.5).float()  # Convert probabilities to binary predictions
+            # (outputs.cpu().numpy() > 0.5).astype(int)  # Convert to 0 or 1
+            return preds.cpu().numpy()
+        
     def predict_proba(self, X):
         if hasattr(X, "toarray"):
             X = X.toarray()
@@ -254,6 +317,7 @@ class TorchClassifierWrapper(BaseEstimator, ClassifierMixin):
         plt.title('Model Loss')
         plt.xlabel('Epoch')
         plt.ylabel('Loss')
+        plt.xticks(range(len(self.history['train_loss'])))
         plt.legend()
 
         plt.subplot(1, 2, 2)
@@ -262,6 +326,7 @@ class TorchClassifierWrapper(BaseEstimator, ClassifierMixin):
         plt.title('Model Accuracy')
         plt.xlabel('Epoch')
         plt.ylabel('Accuracy')
+        plt.xticks(range(len(self.history['train_loss'])))
         plt.legend()
 
         plt.tight_layout()
