@@ -11,7 +11,8 @@ This repo is home to the code that accompanies Jidapa's *Deep Learining Project*
 - **Description:**  
   Developed two ANN classification models addressing different prediction tasks:
 
-  1. **Income Level Prediction (TensorFlow/Keras):**  
+  1. **Income Level Prediction (TensorFlow/Keras):**
+     - **Problem**: To classified individual income Level, this can be one of attribute applied to segmentation of level of customer for loan credit.
      - Dataset features include normalized numerical values like age, fnlwgt, education_num, capital_gain/loss, hours_per_week, and label (>50K or ≤50K).  
      - Model architecture: Sequential with 3 Dense layers (6, 8, 1 units) and Dropout layers to reduce overfitting.  
      - Model size: 107 parameters.  
@@ -19,7 +20,8 @@ This repo is home to the code that accompanies Jidapa's *Deep Learining Project*
        - Cross-validation scores ranged from 45% to 61%.  
        - Final test accuracy improved to ~72%, with test loss around 0.52.
          
-  2. **Credit Eligibility Prediction (PyTorch):**  
+  3. **Credit Eligibility Prediction (PyTorch):**
+     - **Problem**: To classified Credit Eligibility, this can be one of attribute applied to segmentation of level of customer for loan credit.
      - Dataset includes categorical and numerical features from bank marketing data (e.g., job, marital, education, balance).  
      - Missing age values handled; categorical and numerical preprocessing applied.  
      - Model architecture: Fully connected network with layers of sizes [11 → 6 → 6 → 1], with dropout for regularization.  
