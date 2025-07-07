@@ -15,9 +15,7 @@ RUN pip install -r requirements.txt
 
 # Default command to run all required Python scripts
 CMD ["bash", "-c", "\
-    echo 'Running ANN_model.py' && python ANN_model.py && \
-    echo 'Running ANN_usage.py' && python ANN_usage.py && \
-    echo 'Running CNN_model.py' && python CNN_model.py && \
-    echo 'Running CNN_usage.py' && python CNN_usage.py && \
-    echo 'Running ANN_model2.py' && python ANN_model2.py \
+    echo 'Running ANN_model_tf.py' && python ANN_model_tf.py && \
+    echo 'Running ANN_usage_tf.py' && python ANN_usage_tf.py && \
+    echo 'Running ANN_model_pt.py' && python ANN_model_pt.py \
 "]

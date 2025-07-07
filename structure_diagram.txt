@@ -1,0 +1,104 @@
+┌──────────────────────────────────────────────────────────────────────────────┐
+│                             FFNN_tf.py (Utils)                           │
+├──────────────────────────────────────────────────────────────────────────────┤
+│                                                                              │
+│  ┌────────────────────────────────────────────────────────────────────────┐  │
+│  │                 class KerasClassifierWrapper                           │  │
+│  │               (inherits BaseEstimator, ClassifierMixin)                │  │
+│  ├────────────────────────────────────────────────────────────────────────┤  │
+│  │  • __init__(self, input_dim, epochs=50)                                │  │
+│  │        - Stores input_dim, epochs                                      │  │
+│  │        - Initializes Keras model, history                              │  │
+│  │                                                                        │  │
+│  │  • build_model(self)                                                   │  │
+│  │        - Defines architecture: Input → Dense → Dropout → Output        │  │
+│  │        - Compiles with Adam optimizer and binary_crossentropy loss     │  │
+│  │                                                                        │  │
+│  │  • fit(self, X, y)                                                     │  │
+│  │        - Trains model with early stopping                              │  │
+│  │        - Saves training history                                        │  │
+│  │                                                                        │  │
+│  │  • predict(self, X)                                                    │  │
+│  │        - Outputs class predictions                                     │  │
+│  │                                                                        │  │
+│  │  • score(self, X, y)                                                   │  │
+│  │        - Returns accuracy on given data                                │  │
+│  │                                                                        │  │
+│  │  • get_summary(self)                                                   │  │
+│  │        - Prints model architecture summary                             │  │
+│  │                                                                        │  │
+│  │  • get_history(self)                                                   │  │
+│  │        - Returns training history as dictionary                        │  │
+│  │                                                                        │  │
+│  │  • plot_model(self)                                                    │  │
+│  │        - Saves model structure plot (Graphviz required)                │  │
+│  │                                                                        │  │
+│  │  • plot_history(self)                                                  │  │
+│  │        - Plots training/validation accuracy and loss                   │  │
+│  └────────────────────────────────────────────────────────────────────────┘  │
+│                                                                              │
+│  ┌────────────────────────────────────────────────────────────────────────┐  │
+│  │                           def load_model(file_path)                    │  │
+│  ├────────────────────────────────────────────────────────────────────────┤  │
+│  │  • Loads and compiles saved Keras model                                │  │
+│  │  • Prints model summary and layer info                                 │  │
+│  │  • Returns compiled model                                              │  │
+│  └────────────────────────────────────────────────────────────────────────┘  │
+│                                                                              │
+│  ┌────────────────────────────────────────────────────────────────────────┐  │
+│  │                          def load_history(file_path)                   │  │
+│  ├────────────────────────────────────────────────────────────────────────┤  │
+│  │  • Loads training history from joblib (.pkl)                           │  │
+│  │  • Returns history dictionary                                          │  │
+│  └────────────────────────────────────────────────────────────────────────┘  │
+│                                                                              │
+│  ┌────────────────────────────────────────────────────────────────────────┐  │
+│  │                       def plot_saved_history(file_path)                │  │
+│  ├────────────────────────────────────────────────────────────────────────┤  │
+│  │  • Plots accuracy and loss from saved history                          │  │
+│  │  • Requires .pkl file from joblib                                      │  │
+│  └────────────────────────────────────────────────────────────────────────┘  │
+│                                                                              │
+└──────────────────────────────────────────────────────────────────────────────┘
+
+# ====================================================================================================
+
+┌──────────────────────────────────────────────────────────────────────────────┐
+│                             FFNN_pt.py (Utils)                           │
+├──────────────────────────────────────────────────────────────────────────────┤
+│                                                                              │
+│  ┌────────────────────────────────────────────────────────────────────────┐  │
+│  │                         class TorchModel                               │  │
+│  │                      (inherits nn.Module)                              │  │
+│  ├────────────────────────────────────────────────────────────────────────┤  │
+│  │  • __init__(self, input_dim, output_dim)                               │  │
+│  │        - Defines layers (e.g., Linear)                                 │  │
+│  │                                                                        │  │
+│  │  • forward(self, x)                                                    │  │
+│  │        - Forward pass logic                                            │  │
+│  └────────────────────────────────────────────────────────────────────────┘  │
+│                                                                              │
+│  ┌────────────────────────────────────────────────────────────────────────┐  │
+│  │                    class TorchClassifierWrapper                        │  │
+│  ├────────────────────────────────────────────────────────────────────────┤  │
+│  │  • __init__(self, input_dim, epochs=50, lr=0.001...)                   │  │
+│  │        - Initialize model/optimizer                                    │  │
+│  │        - Setup GradScaler, device, history                             │  │
+│  │                                                                        │  │
+│  │  • fit(self, X, y)                                                     │  │
+│  │  • save_model(self, path)                                              │  │
+│  │  • predict(self, inputs)                                               │  │
+│  │  • predict_proba(self, inputs)                                         │  │
+│  └────────────────────────────────────────────────────────────────────────┘  │
+│                                                                              │
+│  ┌────────────────────────────────────────────────────────────────────────┐  │
+│  │                       class SavedModelUsage                            │  │
+│  ├────────────────────────────────────────────────────────────────────────┤  │
+│  │  • __init__(self, path)                                                │  │
+│  │  • load_model(self, path)                                              │  │
+│  │  • preprocess_data_for_prediction(self, data)                          │  │
+│  │  • get_prediction(self, data)                                          │  │
+│  │  • plot_saved_history(self)                                            │  │
+│  └────────────────────────────────────────────────────────────────────────┘  │
+│                                                                              │
+└──────────────────────────────────────────────────────────────────────────────┘
