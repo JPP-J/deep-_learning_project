@@ -1,0 +1,31 @@
+classDiagram
+    class cnn_train_set_pic {
+        -data_path
+        -test_path
+        -model
+        -history
+
+        +load_and_preprocess_data(path=None)
+        +create_cnn_model()
+        +train_set_pic_cnn()
+        +get_summary()
+        +plot_model()
+        +plot_accuracy_loss()
+        +plot_cm_test()
+    }
+
+    class cnn_saved_model_usage {
+        -path_model
+        -path_his
+        -test_path
+        -model
+        -history_dict
+
+        +load_model()
+        +load_history()
+        +plot_saved_history()
+        +load_and_preprocess_data(path=None)
+        +plot_cm_test()
+    }
+
+    cnn_train_set_pic --> cnn_saved_model_usage : shared test data structure
