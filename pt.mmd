@@ -1,0 +1,25 @@
+classDiagram
+    class TorchModel {
+        <<inherits nn.Module>>
+        +__init__(input_dim, output_dim)
+        +forward(x)
+    }
+
+    class TorchClassifierWrapper {
+        +__init__(input_dim, epochs=50, lr=0.001, ...)
+        +fit(X, y)
+        +save_model(path)
+        +predict(inputs)
+        +predict_proba(inputs)
+    }
+
+    class SavedModelUsage {
+        +__init__(path)
+        +load_model(path)
+        +preprocess_data_for_prediction(data)
+        +get_prediction(data)
+        +plot_saved_history()
+    }
+
+TorchClassifierWrapper --> TorchModel : uses
+SavedModelUsage --> TorchModel : loads

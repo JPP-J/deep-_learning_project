@@ -1,0 +1,27 @@
+classDiagram
+    class KerasClassifierWrapper {
+        +__init__(input_dim, epochs=50)
+        +build_model()
+        +fit(X, y)
+        +predict(X)
+        +score(X, y)
+        +get_summary()
+        +get_history()
+        +plot_model()
+        +plot_history()
+    }
+
+    class load_model {
+        <<function>>
+        +load_model(file_path)
+    }
+
+    class load_history {
+        <<function>>
+        +load_history(file_path)
+    }
+
+    class plot_saved_history {
+        <<function>>
+        +plot_saved_history(file_path)
+    }
