@@ -6,7 +6,7 @@
 
 This repo is home to the code that accompanies Jidapa's *Deep Learining Project* :
 
-## Project 1: Artificial Neural Network (ANN) Classification
+## Artificial Neural Network (ANN) Classification Project
 
 - **Description:**  
   Developed two ANN classification models addressing different prediction tasks:
