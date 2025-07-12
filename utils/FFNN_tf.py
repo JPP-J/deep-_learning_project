@@ -26,10 +26,16 @@ class KerasClassifierWrapper(BaseEstimator, ClassifierMixin):
         model = Sequential([
             # Input Layer
             # Input(shape=(self.input_dim,)),                             # Input optional
-            Dense(6, input_dim=self.input_dim, activation='relu'),  # Input
+            Dense(64, input_dim=self.input_dim, activation='relu'),  # Input
 
             # First Hidden Layer (Dense layer/Fully connected layer)
-            Dense(8, activation='relu'),    # ReLU activation: Common for hidden layers
+            Dense(64, activation='relu'),    # ReLU activation: Common for hidden layers
+            Dropout(0.1),
+
+            Dense(64, activation='relu'),    # ReLU activation: Common for hidden layers
+            Dropout(0.1),
+
+            Dense(64, activation='relu'),    # ReLU activation: Common for hidden layers
             Dropout(0.2),
 
             # Output Layer
@@ -48,26 +54,43 @@ class KerasClassifierWrapper(BaseEstimator, ClassifierMixin):
         self.classes_ = np.unique(y)  # Store the unique classes
         early_stopping = EarlyStopping(
             monitor='val_loss',
-            patience=10,                # Number of epochs to wait for improvement
+            patience=15,                # Number of epochs to wait for improvement
             restore_best_weights=True   # Restore the best weights after stopping
         )
         self.history = self.model.fit(
             X, y,
             epochs= self.epochs,
-            batch_size=64,
+            batch_size=16,
             validation_split=0.2,
             callbacks=[early_stopping],
             verbose=1
         )
         return self
 
+    # def predict(self, X):
+    #     predictions = self.model.predict(X)
+    #     return np.argmax(predictions, axis=1)
+
     def predict(self, X):
-        predictions = self.model.predict(X)
-        return np.argmax(predictions, axis=1)
+        y_pred = self.model.predict(X, verbose=0)
+
+        if y_pred.ndim == 2 and y_pred.shape[1] == 1:
+            return (y_pred.ravel() > 0.5).astype(int)  # Binary
+        else:
+            return np.argmax(y_pred, axis=1)          # Multiclass
+
     
     def score(self, X, y):
-        y_pred = self.model.predict(X)
-        y_pred_classes = np.argmax(y_pred, axis=1) if y_pred.ndim > 1 else (y_pred > 0.5).astype(int)
+        y_pred = self.model.predict(X, verbose=0)
+
+        # Binary case: one sigmoid unit
+        if y_pred.ndim == 2 and y_pred.shape[1] == 1:
+            y_pred_classes = (y_pred.ravel() > 0.5).astype(int)
+
+        # Multi-class case: softmax with >1 columns
+        else:
+            y_pred_classes = np.argmax(y_pred, axis=1)
+
         return accuracy_score(y, y_pred_classes)
 
     def get_summary(self):

@@ -45,7 +45,7 @@ def data_preprocessing(df):
 # Part3: Create the Pipeline model
 def create_pipeline(input_dim, X_train, X_test, y_train, y_test, epochs=100, cv=False):
     pipeline = Pipeline([
-        ('scaler', MinMaxScaler()),
+        ('scaler', StandardScaler()),
         ('model', KerasClassifierWrapper(input_dim=input_dim, epochs=epochs))       # number feature input
     ])
 
@@ -60,10 +60,6 @@ def create_pipeline(input_dim, X_train, X_test, y_train, y_test, epochs=100, cv=
         print("Cross-validation scores:", scores)
 
     # Evaluate the Model with test set
-    accuracy = pipeline.score(X_test, y_test)
-    print(f"Test accuracy: {accuracy:.2f}")
-
-
     accuracy = pipeline.score(X_test, y_test)  # Evaluate the model on the test set
     print(f"Test accuracy: {accuracy:.2f}")
 
@@ -119,8 +115,8 @@ if __name__ == "__main__":
     path = "https://drive.google.com/uc?id=17XQMzAh3_zSq63eCVgPKV2CJjSM7IbJQ"
     df  = load_data(path, sep=';')
     X, y, label_encoder = data_preprocessing(df)
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42, stratify=y)
-    pipeline = create_pipeline(X_train.shape[1], X_train, X_test, y_train, y_test, epochs=20, cv=False)
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, shuffle=True, random_state=42, stratify=y)
+    pipeline = create_pipeline(X_train.shape[1], X_train, X_test, y_train, y_test, epochs=50, cv=True)
     # save_model(pipeline, label_encoder)
     # infer_and_predict(pipeline, label_encoder)
 

@@ -13,36 +13,87 @@ columns name: ['age' 'fnlwgt' 'education_num' 'capital_gain' 'capital_loss'
 labels size: (array(['<=50K', '>50K'], dtype=object), array([501, 499]))
 dataset shape: (1000, 7)
 
+Epoch 1/50
+32/32 ━━━━━━━━━━━━━━━━━━━━ 2s 9ms/step - accuracy: 0.6354 - loss: 0.6726 - val_accuracy: 0.6719 - val_loss: 0.6052
+Epoch 2/50
+32/32 ━━━━━━━━━━━━━━━━━━━━ 0s 4ms/step - accuracy: 0.7330 - loss: 0.5464 - val_accuracy: 0.6719 - val_loss: 0.5725
+Epoch 3/50
+32/32 ━━━━━━━━━━━━━━━━━━━━ 0s 4ms/step - accuracy: 0.7669 - loss: 0.5069 - val_accuracy: 0.7031 - val_loss: 0.5617
+Epoch 4/50
+32/32 ━━━━━━━━━━━━━━━━━━━━ 0s 4ms/step - accuracy: 0.7750 - loss: 0.4722 - val_accuracy: 0.6797 - val_loss: 0.5719
+Epoch 5/50
+32/32 ━━━━━━━━━━━━━━━━━━━━ 0s 4ms/step - accuracy: 0.7780 - loss: 0.4923 - val_accuracy: 0.6953 - val_loss: 0.5587
+Epoch 6/50
+32/32 ━━━━━━━━━━━━━━━━━━━━ 0s 4ms/step - accuracy: 0.7555 - loss: 0.4912 - val_accuracy: 0.7031 - val_loss: 0.5535
+Epoch 7/50
+32/32 ━━━━━━━━━━━━━━━━━━━━ 0s 4ms/step - accuracy: 0.7679 - loss: 0.4803 - val_accuracy: 0.6953 - val_loss: 0.5563
+Epoch 8/50
+32/32 ━━━━━━━━━━━━━━━━━━━━ 0s 4ms/step - accuracy: 0.7720 - loss: 0.4665 - val_accuracy: 0.6875 - val_loss: 0.5587
+Epoch 9/50
+32/32 ━━━━━━━━━━━━━━━━━━━━ 0s 4ms/step - accuracy: 0.7774 - loss: 0.4555 - val_accuracy: 0.7188 - val_loss: 0.5543
+Epoch 10/50
+32/32 ━━━━━━━━━━━━━━━━━━━━ 0s 4ms/step - accuracy: 0.7836 - loss: 0.4358 - val_accuracy: 0.7188 - val_loss: 0.5658
+Epoch 11/50
+32/32 ━━━━━━━━━━━━━━━━━━━━ 0s 4ms/step - accuracy: 0.7834 - loss: 0.4623 - val_accuracy: 0.7266 - val_loss: 0.5457
+Epoch 12/50
+32/32 ━━━━━━━━━━━━━━━━━━━━ 0s 4ms/step - accuracy: 0.7689 - loss: 0.4424 - val_accuracy: 0.7344 - val_loss: 0.5624
+Epoch 13/50
+32/32 ━━━━━━━━━━━━━━━━━━━━ 0s 4ms/step - accuracy: 0.7786 - loss: 0.4363 - val_accuracy: 0.7344 - val_loss: 0.5560
+Epoch 14/50
+32/32 ━━━━━━━━━━━━━━━━━━━━ 0s 4ms/step - accuracy: 0.7870 - loss: 0.4528 - val_accuracy: 0.7266 - val_loss: 0.5683
+Epoch 15/50
+32/32 ━━━━━━━━━━━━━━━━━━━━ 0s 4ms/step - accuracy: 0.7908 - loss: 0.4389 - val_accuracy: 0.7422 - val_loss: 0.5683
+Epoch 16/50
+32/32 ━━━━━━━━━━━━━━━━━━━━ 0s 4ms/step - accuracy: 0.7931 - loss: 0.4231 - val_accuracy: 0.7422 - val_loss: 0.5697
+Epoch 17/50
+32/32 ━━━━━━━━━━━━━━━━━━━━ 0s 4ms/step - accuracy: 0.7833 - loss: 0.4284 - val_accuracy: 0.7422 - val_loss: 0.5644
+Epoch 18/50
+32/32 ━━━━━━━━━━━━━━━━━━━━ 0s 5ms/step - accuracy: 0.7970 - loss: 0.4257 - val_accuracy: 0.7422 - val_loss: 0.5766
+Epoch 19/50
+32/32 ━━━━━━━━━━━━━━━━━━━━ 0s 6ms/step - accuracy: 0.8027 - loss: 0.4132 - val_accuracy: 0.7188 - val_loss: 0.5745
+Epoch 20/50
+32/32 ━━━━━━━━━━━━━━━━━━━━ 0s 5ms/step - accuracy: 0.7791 - loss: 0.4284 - val_accuracy: 0.7344 - val_loss: 0.5810
+Epoch 21/50
+32/32 ━━━━━━━━━━━━━━━━━━━━ 0s 6ms/step - accuracy: 0.7968 - loss: 0.4125 - val_accuracy: 0.7266 - val_loss: 0.5878
+Epoch 22/50
+32/32 ━━━━━━━━━━━━━━━━━━━━ 0s 4ms/step - accuracy: 0.7904 - loss: 0.3992 - val_accuracy: 0.7109 - val_loss: 0.6058
+Epoch 23/50
+32/32 ━━━━━━━━━━━━━━━━━━━━ 0s 5ms/step - accuracy: 0.7949 - loss: 0.4085 - val_accuracy: 0.7422 - val_loss: 0.5891
+Epoch 24/50
+32/32 ━━━━━━━━━━━━━━━━━━━━ 0s 4ms/step - accuracy: 0.8019 - loss: 0.4196 - val_accuracy: 0.7188 - val_loss: 0.5914
+Epoch 25/50
+32/32 ━━━━━━━━━━━━━━━━━━━━ 0s 4ms/step - accuracy: 0.8025 - loss: 0.3933 - val_accuracy: 0.7109 - val_loss: 0.6021
+Epoch 26/50
+32/32 ━━━━━━━━━━━━━━━━━━━━ 0s 4ms/step - accuracy: 0.8165 - loss: 0.3738 - val_accuracy: 0.7188 - val_loss: 0.6141
 
-Test accuracy: 0.50
-
+Cross-validation scores: [0.70625 0.75625 0.76875 0.7     0.7375 ]
+Test accuracy: 0.70
 Model: "sequential"
-┌─────────────────────────────────┬────────────────────────┬───────────────┐
-│ Layer (type)                    │ Output Shape           │       Param # │
-├─────────────────────────────────┼────────────────────────┼───────────────┤
-│ dense (Dense)                   │ (None, 6)              │            42 │
-├─────────────────────────────────┼────────────────────────┼───────────────┤
-│ dropout (Dropout)               │ (None, 6)              │             0 │
-├─────────────────────────────────┼────────────────────────┼───────────────┤
-│ dense_1 (Dense)                 │ (None, 8)              │            56 │
-├─────────────────────────────────┼────────────────────────┼───────────────┤
-│ dropout_1 (Dropout)             │ (None, 8)              │             0 │
-├─────────────────────────────────┼────────────────────────┼───────────────┤
-│ dense_2 (Dense)                 │ (None, 1)              │             9 │
-└─────────────────────────────────┴────────────────────────┴───────────────┘
- Total params: 107 (428.00 B)
- Trainable params: 107 (428.00 B)
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━┓
+┃ Layer (type)                         ┃ Output Shape                ┃         Param # ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━┩
+│ dense (Dense)                        │ (None, 64)                  │             448 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ dense_1 (Dense)                      │ (None, 64)                  │           4,160 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ dropout (Dropout)                    │ (None, 64)                  │               0 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ dense_2 (Dense)                      │ (None, 64)                  │           4,160 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ dropout_1 (Dropout)                  │ (None, 64)                  │               0 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ dense_3 (Dense)                      │ (None, 64)                  │           4,160 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ dropout_2 (Dropout)                  │ (None, 64)                  │               0 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ dense_4 (Dense)                      │ (None, 1)                   │              65 │
+└──────────────────────────────────────┴─────────────────────────────┴─────────────────┘
+ Total params: 38,981 (152.27 KB)
+ Trainable params: 12,993 (50.75 KB)
  Non-trainable params: 0 (0.00 B)
+ Optimizer params: 25,988 (101.52 KB)
 
-Cross-validation scores: [0.45   0.4625 0.5    0.6125 0.45  ]
-
-None
-Layer: dense, Type: Dense
-Layer: dropout, Type: Dropout
-Layer: dense_1, Type: Dense
-Layer: dropout_1, Type: Dropout
-Layer: dense_2, Type: Dense
-
+-------------------------------------------------------------------------------------------------------------------------------
 > ANN_model_pt.py
     id   age          job  marital  education default  balance housing loan   contact  day month  duration  campaign  pdays  previous poutcome   y
 0   1  30.0   unemployed  married    primary      no     1787      no   no  cellular   19   oct        79         1     -1         0  unknown  no 
